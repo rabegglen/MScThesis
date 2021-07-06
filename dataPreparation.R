@@ -84,6 +84,7 @@ temp = dat %>%
     trExHelp_3 = coalesce(!!! select(., matches("trExHelp_3"))),
     consideration = coalesce(!!! select(., matches("consideration"))),
     reUse = coalesce(!!! select(., matches("reUse"))),
+    email = coalesce(!!! select(., matches("TYGB")))
     
     
   )
@@ -94,7 +95,19 @@ temp %>%
   count(., group)
 
 
-save(temp, file = "./data/dataCompiled.RData")
+
+
+
+save(temp, file = "./data/dataCompiled.RData")### entire data with email addresses
+
+### extracting the data without email and location data
+
+calcDat = temp %>% 
+  select(
+    !matches("loc|mail|tygb|ipaddress")
+  )
+
+save(calcDat, file = "dataSet.RData")
 
 temp %>% 
   select(matches("rev")) %>% 
