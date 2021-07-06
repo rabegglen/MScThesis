@@ -2,8 +2,29 @@
 
 source("dataPreparation.R")
 
-load("./data/dataCompiled.RData")
+load("./dataSet.RData")
 
 
-desc = temp %>% 
+
+if(!require("pacman")){
+  
+  install.packages("pacman")
+  
+}
+
+pacman :: p_load(
+  lavaan,
+  install = TRUE
+  
+)
+
+
+
+### some descriptive statistics
+
+desc = calcDat %>% 
   count(Age_1)
+
+
+lang = calcDat %>% 
+  count(language)
