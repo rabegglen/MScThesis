@@ -239,3 +239,159 @@ alphaDat %>%
 
 
 
+
+
+
+####### MC variables
+
+
+# cronbach's alpha
+
+# only anthropomorphic bots
+
+MCdat %>% 
+  dplyr :: select(matches("anthro|group")) %>% 
+  dplyr :: filter(
+    grepl("^A", group)
+  ) %>% 
+  select(matches("anthro")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.6
+
+
+# only empathic bots
+
+MCdat %>% 
+  dplyr :: select(matches("empathy|group")) %>% 
+  dplyr :: filter(
+    grepl("E$", group)
+  ) %>% 
+  select(matches("empathy")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.81
+
+
+
+# only non-anthropomorphic bots
+
+MCdat %>% 
+  dplyr :: select(matches("anthro|group")) %>% 
+  dplyr :: filter(
+    grepl("^N", group)
+  ) %>% 
+  select(matches("anthro")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.59
+
+
+# only non-empathic bots
+
+MCdat %>% 
+  dplyr :: select(matches("empathy|group")) %>% 
+  dplyr :: filter(
+    grepl("N$", group)
+  ) %>% 
+  select(matches("empathy")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.75
+
+
+
+
+
+
+
+
+
+
+# did you lose money?
+
+MCdat %>% 
+  select(matches("service")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+
+### not acceptable - tossed out
+
+
+## let's filter only for the different types of bots
+
+
+MCdat %>% 
+  dplyr :: select(matches("service|group")) %>% 
+  dplyr :: filter(
+    grepl("^A", group)
+  ) %>% 
+  select(matches("service")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.6
+
+
+# AE bots
+
+
+MCdat %>% 
+  dplyr :: select(matches("service|group")) %>% 
+  dplyr :: filter(
+    grepl("^AE$", group)
+  ) %>% 
+  select(matches("service")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+
+# only empathic bots
+
+MCdat %>% 
+  dplyr :: select(matches("service|group")) %>% 
+  dplyr :: filter(
+    grepl("E$", group)
+  ) %>% 
+  select(matches("service")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.81
+
+
+
+# only non-anthropomorphic bots
+
+MCdat %>% 
+  dplyr :: select(matches("service|group")) %>% 
+  dplyr :: filter(
+    grepl("^N", group)
+  ) %>% 
+  select(matches("service")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.59
+
+
+# only non-empathic bots
+
+MCdat %>% 
+  dplyr :: select(matches("service|group")) %>% 
+  dplyr :: filter(
+    grepl("N$", group)
+  ) %>% 
+  select(matches("service")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# 0.75
+
+
+
