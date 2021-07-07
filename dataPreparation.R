@@ -87,7 +87,8 @@ temp = dat %>%
     email = coalesce(!!! select(., matches("TYGB")))
     
     
-  )
+  ) %>% 
+  rename(Playful1_2rev = Playful1_2)### minor correction as this item was found reversed - forgot it to flag it into the native survey data
 
 
 
