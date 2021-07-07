@@ -107,6 +107,13 @@ alphaDat %>%
 
 ### 0.81
 
+# general pre-incident expectations
+
+alphaDat %>% 
+  select(matches("^trEx")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha(.)
+
 
 
 ###### trusting expectations
@@ -141,7 +148,17 @@ alphaDat %>%
   alpha()
 
 
-###### expectations disconfirmation
+# general post incident expectation beliefs
+
+alphaDat %>% 
+  select(matches("^PI_trex")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha(., check.keys = TRUE)
+
+
+
+
+###### expectations disconfirmation post-incident
 
 
 # Post incident trusting expectations disconfirmation functionality
@@ -173,6 +190,14 @@ alphaDat %>%
   mutate_all(., funs(as.numeric(.))) %>% 
   alpha()
 
+
+### all expectation disconfirmation beliefs
+
+
+alphaDat %>% 
+  select(matches("^PI_TrDisc")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha()
 
 
 ###### trusting performance
@@ -210,6 +235,13 @@ alphaDat %>%
   alpha()
 
 
+### overall performance beliefs
+
+alphaDat %>% 
+  select(matches("^PI_TrPerf")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha(., check.keys = TRUE)
+
 
 #### tech satisfaction
 
@@ -246,6 +278,16 @@ alphaDat %>%
 
 
 # cronbach's alpha
+
+
+### anthropomorphism in general
+
+MCdat %>% 
+  select(matches("anthro")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+# .73
 
 # only anthropomorphic bots
 
@@ -308,6 +350,15 @@ MCdat %>%
 
 
 
+### empathy
+
+# empathy in general
+
+
+MCdat %>% 
+  select(matches("empathy")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
 
 
 
