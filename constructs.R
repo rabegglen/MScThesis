@@ -23,7 +23,7 @@ unique(calcDat$PI_Tech_Satisfact4) %>% na.omit()
 
 ## recoding
 
-temp = calcDat %>% 
+calcDat = calcDat %>% 
   
   select(-StartDate, -EndDate) %>% ## dates always cause trouble due to posixct standards interfering with other operations
   
@@ -69,7 +69,12 @@ temp = calcDat %>%
 names(dat)
 
 
-#### cronbach's alpha
+
+
+
+
+
+
 
 
 
