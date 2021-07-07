@@ -12,8 +12,12 @@ if(!require("pacman")){
   
 }
 
+devtools :: install_github("alishinski/lavaanPlot")
+
 pacman :: p_load(
   lavaan,
+  lavaanPlot,
+  devtools,
   install = TRUE
   
 )
@@ -28,3 +32,5 @@ desc = calcDat %>%
 
 lang = calcDat %>% 
   count(language)
+
+
