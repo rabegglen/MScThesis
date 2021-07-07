@@ -63,7 +63,7 @@ calcDat = calcDat %>%
   # creating unified scales with the rowmeans of the items
   
   mutate_at(### string which matches all the measured variables
-    vars(matches("playful|innov|TrustingStance|robotse|^TrustingSt_Agent|^trExReliability|^trExFunct|^trExHelp|^PI_trex_func|^PI_trex_helpful|^PI_trex_reliab|^PI_TrDisc_func|^PI_TrDisc_helpful|^PI_TrDisc_reliab|^PI_TrPerf_func|^PI_TrPerf_reliab|^PI_TrPerf_helpful|^PI_TechTr_Intentio|^Usage_Cont_Intention|^PI_Tech_Satisfact")),
+    vars(matches("proposition|playful|innov|TrustingStance|robotse|^TrustingSt_Agent|^trExReliability|^trExFunct|^trExHelp|^PI_trex_func|^PI_trex_helpful|^PI_trex_reliab|^PI_TrDisc_func|^PI_TrDisc_helpful|^PI_TrDisc_reliab|^PI_TrPerf_func|^PI_TrPerf_reliab|^PI_TrPerf_helpful|^PI_TechTr_Intentio|^Usage_Cont_Intention|^PI_Tech_Satisfact")),
     list(
       ~as.numeric(.)
     )
@@ -128,7 +128,7 @@ calcDat = calcDat %>%
     
     # all vars
     
-    PI_trDisc = rowMeans(select(., matches("^PI_TrDisc"))),
+    PI_trDiscAll = rowMeans(select(., matches("^PI_TrDisc"))),
     
     # single vars
     
@@ -170,25 +170,23 @@ calcDat = calcDat %>%
     
     # Technology satisfaction
     
-    PI_TechSatisfaction = rowMeans(select(., matches("^PI_Tech_Satisfact"))),
+    PI_TechSatisfactionAll = rowMeans(select(., matches("^PI_Tech_Satisfact"))),
     
     
-    PI_trPerform = rowMeans(select(., matches("^PI_TrPerf"))),
+    PI_trPerformAll = rowMeans(select(., matches("^PI_TrPerf"))),
     
     # Tech trusting intentions
-    TechTrIntentions = rowMeans(select(., matches("^PI_TechTr_Intentio"))),
+    TechTrIntentionsAll = rowMeans(select(., matches("^PI_TechTr_Intentio"))),
     
     # usage continuance intentions
-    UseContIntentions = rowMeans(select(., matches("^Usage_Cont_Intention"))),
+    UseContIntentionsAll = rowMeans(select(., matches("^Usage_Cont_Intention"))),
     
   ) %>% 
-  
-  select(-matches("^AN|^NN|^NE|^AE|^Q[1-9]{1,}")) ### tossing out the cluttered variables which were unified anyway into their grouped constructs
+  select(-matches("^AN|^NN|^NE|^AE|^Q[1-9]{1,}")) %>% 
+  select(Age_1, Edu, UserLanguage:Gender, group, matches("^MC_"), consideration:UseContIntentionsAll, proposition) ### tossing out the cluttered variables which were unified anyway into their grouped constructs
 
 
 names(calcDat)
-
-
 
 
 
