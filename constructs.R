@@ -46,16 +46,39 @@ temp = calcDat %>%
            )
            
          )    
-             )
+             ) %>% 
+  
+  ### recoding reversed items
+  mutate_at(
+    vars(matches("rev$")),
+    list(~
+      case_when(
+        . == "1" ~ "7",
+        . == "2" ~ "6",
+        . == "3" ~ "5",
+        . == "4" ~ "4",
+        . == "5" ~ "3",
+        . == "6" ~ "2",
+        . == "7" ~ "1",
+        TRUE ~ .
+      )
+    )
+  )
+
+
+## some simple testing
+
+
+# calcDat %>% 
+#   select(matches("rev$")) %>% 
+#   View()
+# 
+# 
+# temp %>% 
+#   select(matches("rev")) %>% 
+#   View()
 
 
 
-#### preparing the constructs & recoding all reversed items
 
-revItems = names(calcDat) %>% 
-  .[grepl("rev$", .)]
-
-
-
-revDat = 
 
