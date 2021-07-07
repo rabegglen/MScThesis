@@ -66,17 +66,12 @@ temp = calcDat %>%
   )
 
 
-## some simple testing
+names(dat)
 
 
-# calcDat %>% 
-#   select(matches("rev$")) %>% 
-#   View()
-# 
-# 
-# temp %>% 
-#   select(matches("rev")) %>% 
-#   View()
+#### cronbach's alpha
+
+
 
 
 
