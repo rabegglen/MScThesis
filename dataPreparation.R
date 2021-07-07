@@ -106,7 +106,8 @@ save(temp, file = "./data/dataCompiled.RData")### entire data with email address
 calcDat = temp %>% 
   select(
     !matches("loc|mail|tygb|ipaddress")
-  )
+  ) %>% 
+  select(-StartDate, -EndDate)
 
 save(calcDat, file = "dataSet.RData")
 
