@@ -44,7 +44,7 @@ anthro = MCdat %>%
 
 
 
-# Kurskall Test
+# Kurskal Test
 kruskal.test(MCAnthro ~ group, data=anthro) # significant
 
 
@@ -72,7 +72,7 @@ empath = MCdat %>%
 
 
 
-# Kurskall Test
+# Kurskal Test
 kruskal.test(MCEmpath ~ group, data=empath) # significant
 
 
