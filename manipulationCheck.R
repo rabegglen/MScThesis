@@ -38,14 +38,14 @@ anthro = MCdat %>%
   ) %>% 
   
   mutate(
-    MCAnthro = rowMeans(select(., matches("anthro")))
+    MCAnthro = rowMeans(select(., matches("anthro"))) ### creating the mean to simplify the variable
   )
 
 
 
 
 # Kurskall Test
-kruskal.test(MCAnthro ~ group, data=anthro) # signifikant
+kruskal.test(MCAnthro ~ group, data=anthro) # significant
 
 
 
