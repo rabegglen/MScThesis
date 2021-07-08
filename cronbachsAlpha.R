@@ -1,5 +1,8 @@
 #### cronbach's alpha
 
+#### this functionality comes with the plspm package anyway
+
+
 
 # source("dataPreparation.R")
 source("constructs.R")

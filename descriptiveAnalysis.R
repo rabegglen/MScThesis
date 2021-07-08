@@ -12,7 +12,7 @@ if(!require("pacman")){
   
 }
 
-# devtools :: install_github("alishinski/lavaanPlot")
+
 
 pacman :: p_load(
   lavaan,
