@@ -282,7 +282,7 @@ alphaDat %>%
 
 ### anthropomorphism in general
 
-MCdat %>% 
+alphaDat %>% 
   select(matches("anthro")) %>% 
   mutate_all(., list(as.numeric)) %>% 
   alpha()
@@ -291,7 +291,7 @@ MCdat %>%
 
 # only anthropomorphic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("anthro|group")) %>% 
   dplyr :: filter(
     grepl("^A", group)
@@ -305,7 +305,7 @@ MCdat %>%
 
 # only empathic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("empathy|group")) %>% 
   dplyr :: filter(
     grepl("E$", group)
@@ -320,7 +320,7 @@ MCdat %>%
 
 # only non-anthropomorphic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("anthro|group")) %>% 
   dplyr :: filter(
     grepl("^N", group)
@@ -334,7 +334,7 @@ MCdat %>%
 
 # only non-empathic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("empathy|group")) %>% 
   dplyr :: filter(
     grepl("N$", group)
@@ -355,7 +355,7 @@ MCdat %>%
 # empathy in general
 
 
-MCdat %>% 
+alphaDat %>% 
   select(matches("empathy")) %>% 
   mutate_all(., list(as.numeric)) %>% 
   alpha()
@@ -365,10 +365,27 @@ MCdat %>%
 
 # did you lose money?
 
-MCdat %>% 
-  select(matches("service")) %>% 
+alphaDat %>% 
+  select(MC_serviceFailure_2, MC_serviceFailure_3rev) %>% 
   mutate_all(., list(as.numeric)) %>% 
   alpha()
+
+
+
+alphaDat %>% 
+  select(MC_serviceFailure_2, MC_serviceFailure_3rev) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha()
+
+alphaDat %>% 
+  select(MC_serviceFailure_2) %>% 
+  mutate_all(., list(as.numeric)) %>%
+  .$MC_serviceFailure_2 %>% 
+  mean()
+
+
+lm(MC_serviceFailure_3rev ~ group, data = alphaDat) %>% 
+  summary
 
 
 ### not acceptable - tossed out
@@ -377,7 +394,7 @@ MCdat %>%
 ## let's filter only for the different types of bots
 
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("service|group")) %>% 
   dplyr :: filter(
     grepl("^A", group)
@@ -392,7 +409,7 @@ MCdat %>%
 # AE bots
 
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("service|group")) %>% 
   dplyr :: filter(
     grepl("^AE$", group)
@@ -404,7 +421,7 @@ MCdat %>%
 
 # only empathic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("service|group")) %>% 
   dplyr :: filter(
     grepl("E$", group)
@@ -419,7 +436,7 @@ MCdat %>%
 
 # only non-anthropomorphic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("service|group")) %>% 
   dplyr :: filter(
     grepl("^N", group)
@@ -433,7 +450,7 @@ MCdat %>%
 
 # only non-empathic bots
 
-MCdat %>% 
+alphaDat %>% 
   dplyr :: select(matches("service|group")) %>% 
   dplyr :: filter(
     grepl("N$", group)
