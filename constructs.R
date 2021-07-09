@@ -182,8 +182,8 @@ calcDat = calcDat %>%
     UseContIntentionsAll = rowMeans(select(., matches("^Usage_Cont_Intention"))),
     
   ) %>% 
-  select(-matches("^AN|^NN|^NE|^AE|^Q[1-9]{1,}")) %>% 
-  select(Age_1, Edu, UserLanguage:Gender, group, matches("^MC_"), consideration:UseContIntentionsAll, proposition) ### tossing out the cluttered variables which were unified anyway into their grouped constructs
+  select(-matches("^AN|^NN|^NE|^AE|^Q[1-9]{1,}"))# %>% 
+  # select(Age_1, Edu, UserLanguage:Gender, group, matches("^MC_"), consideration:UseContIntentionsAll, proposition) ### tossing out the cluttered variables which were unified anyway into their grouped constructs
 
 
 names(calcDat)
