@@ -1,4 +1,4 @@
-#### PLS Path Model 
+#### raw PLS Path Model 
 
 source("constructs.R")
 
@@ -72,6 +72,7 @@ innerplot(techPath, box.size = 0.1)
 
 modelDat = plsDat %>%
   select(
+    
     matches("^anthropo$|^empathy$"),
     matches("anthro.*_[1-9]{1}"), matches("empathy.*_[1-9]{1}"), matches("^trex.*_[1-9]{1}"), matches("pi_trex.*_[1-9]{1}"), matches("trdisc.*_[1-9]{1}"), matches("perf.*_[1-9]{1}"), matches("satis.*[1-9]{1}"), matches("techtr_intention.*_[1-9]{1}"), matches("cont_int.*_[1-9]{1}")
   ) %>% 
