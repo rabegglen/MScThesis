@@ -157,3 +157,28 @@ ggplot(data = anthroModel2$outer_model,
 
 
 
+
+plot(anthroModel2)
+
+
+
+### inner model regressions
+
+
+innerModel = anthroModel2$inner_model
+
+
+
+
+### effects
+
+
+effects = anthroModel2$effects %>% 
+  filter(direct != 0 | indirect != 0)
+
+
+
+
+
+
+
