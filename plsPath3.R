@@ -31,7 +31,7 @@ plsDat = calcDat %>%
   )
 
 
-
+names(plsDat)
 
 ### model 3: adding interaction terms for anthro and empathy
 
@@ -85,9 +85,26 @@ modelDat3 = modelDat %>%
     # empathInter3 = MC_serviceFailure_2 * MC_Empathy_3rev,
     empathInter4 = MC_serviceFailure_3rev * MC_Empathy_1,
     empathInter5 = MC_serviceFailure_3rev * MC_Empathy_2,
-    empathInter6 = MC_serviceFailure_3rev * MC_Empathy_3rev
+    empathInter6 = MC_serviceFailure_3rev * MC_Empathy_3rev,
+    
+    
+    ## interaction with treatment anthropomorphism
+    TreatAnthroInter1 = MC_serviceFailure_2 * anthropo,
+    TreatAnthroInter2 = MC_serviceFailure_3rev * anthropo,
+    
       
-      
+    ## interaction with treatment empathy
+    TreatEmpathInter1 = MC_serviceFailure_2 * empathy,
+    TreatEmpathInter2 = MC_serviceFailure_3rev * empathy
+    
+    
+    # anthropo = as.factor(anthropo),
+    # empathy = as.factor(empathy)
+    # 
+    
+    
+    
+    
       
   )
   
@@ -103,22 +120,30 @@ modelDat3 %>% names()
 ### create the path matrix with the relevant inner model constructs
 
 
-anthro                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-empathy                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-interEmpath            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-interAnthro            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-InitialTechTrustExpect =      c(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustExpect =      c(0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0)
-PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0)
-IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0)
-reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0)
+anthroTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatEmpathInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+anthro                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathy                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interEmpath            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interAnthro            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+InitialTechTrustExpect =      c(1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustExpect =      c(0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
+PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0)
+PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0)
+IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0)
+reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0)
 
 
 techPath = rbind(
+  anthroTreat           ,
+  empathTreat           ,
+  treatAnthroInter      ,
+  treatEmpathInter      ,
   anthro                ,
   empathy               ,
   interEmpath           ,
@@ -156,20 +181,43 @@ failIndex = modelDat3 %>%
 
 interAnthroIndex = modelDat3 %>% 
   names() %>% 
-  grep("anthroInter", ., ignore.case = TRUE)
+  grep("^anthroInter", ., ignore.case = TRUE)
 
 
 
 interEmpathIndex = modelDat3 %>% 
   names() %>% 
-  grep("empathInter", ., ignore.case = TRUE)
+  grep("^empathInter", ., ignore.case = TRUE)
+
+
+
+
+
+treatAnthroInterIndex = modelDat3 %>% 
+  names() %>% 
+  grep("^treatanthroInter", ., ignore.case = TRUE)
+
+
+
+treatEmpathInterIndex = modelDat3 %>% 
+  names() %>% 
+  grep("^treatempathInter", ., ignore.case = TRUE)
+
+
 
 
 # For the treatment
 
-treatIndex = modelDat3 %>% 
+anthroTreatIndex = modelDat3 %>% 
   names() %>% 
-  grep("anthro|empathy", .)
+  grep("^anthropo$", ., ignore.case = TRUE)
+
+
+# For the treatment
+
+empathTreatIndex = modelDat3 %>% 
+  names() %>% 
+  grep("^empathy", ., ignore.case = TRUE)
 
 
 # perceived anthropomorphism
@@ -254,6 +302,10 @@ reUseIndex = modelDat3 %>%
 
 
 modelBlocks = list(
+  anthroTreatIndex,
+  empathTreatIndex,
+  treatAnthroInterIndex,
+  treatEmpathInterIndex,
   anthroIndex,
   emphaIndex,
   interEmpathIndex,
@@ -347,7 +399,7 @@ rownames(pathEffects) = effects$relationships
 ### plotting the effects
 
 # setting margin size
-op = par(mar = c(8, 3, 1, 0.5))
+op = par(mar = c(8, 3, 2, 0.5))
 # barplots of total effects (direct + indirect)
 barplot(t(pathEffects), border = NA, col = c("#9E9AC8", "#DADAEB"),
         las = 2, cex.names = 0.8, cex.axis = 0.8,
