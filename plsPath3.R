@@ -132,7 +132,7 @@ servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 InitialTechTrustExpect =      c(1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 PostIncTechTrustExpect =      c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0)
 PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustDiconf =      c(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
+PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0)
 PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0)
 IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0)
@@ -313,8 +313,8 @@ modelBlocks = list(
   failIndex,
   trexIndex,
   PItrexIndex,
-  trdiscIndex,
   trPerfIndex,
+  trdiscIndex,
   satisIndex,
   techtrInt,
   useContIndex,
