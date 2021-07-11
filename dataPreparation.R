@@ -14,15 +14,28 @@ if(!require("pacman")){
 ### to install the plspm library, please uncomment
 # devtools :: install_github("gastonstat/plspm")### this is for the plspm package. This package was on CRAN, therefore it was validated. The author however exceeded the period to not mark the package as maintained, that's why his github repo is used as download directory.
 
+
+
+
 pacman :: p_load(
   tidyverse,
   readxl,
   plspm,
   plsdepot,
   psych,
+  reshape2,
+  stargazer,
+  tinytex,
+  svglite,
+  viridis,
   install = TRUE
   
 )
+
+## Tinytex latex distro for the supplement
+# tinytex::install_tinytex()
+
+
 
 dat = list.files("./Data/", full.names = TRUE) %>%
   .[grepl("\\.xlsx", .)] %>% 
