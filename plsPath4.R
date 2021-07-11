@@ -1,14 +1,7 @@
-#### the interaction model for the moderation term on the service failure and  also introducint the actual use term. Additionally here with control vars.
+#### the interaction model for the moderation term on the service failure and  also introducing the actual use term. Additionally here with control vars.
 
 source("constructs.R")
 
-# devtools :: install_github("gastonstat/plspm")
-
-pacman :: p_load(
-  plspm,
-  plsdepot,
-  install = TRUE
-)
 
 ## introduce a variable which is coding for anthropomorphism and for empathy separately
 
@@ -48,9 +41,9 @@ plsDat = calcDat %>%
     
     genderNum = case_when(
       
-      grepl("Female", Gender) ~ 1,
-      grepl("Male", Gender) ~ 0
-      
+      grepl("Female", Gender) ~ 2,
+      grepl("Male", Gender) ~ 1,
+      is.na(Gender) ~ 0
     )
     
     
@@ -84,12 +77,12 @@ modelDat = plsDat %>%
   
   mutate(
     
-    ## post incident trusting expectation measures for reliability are anti-correlated due to how the questions were asked
+    ## post incident trusting expectation measures for reliability are anti-correlated due to how the questions were asked, that's why they are reversed here
     PI_TrEx_Reliability_1 = -PI_TrEx_Reliability_1 + max(PI_TrEx_Reliability_1) + 1,
     PI_TrEx_Reliability_2 = -PI_TrEx_Reliability_2 + max(PI_TrEx_Reliability_2) + 1,
     PI_TrEx_Reliability_3 = -PI_TrEx_Reliability_3 + max(PI_TrEx_Reliability_3) + 1,
     
-    ## post incident trusting performance measures for reliability are anti-correlated due to how the questions were asked
+    ## post incident trusting performance measures for reliability are anti-correlated due to how the questions were asked, that's why they are reversed here
     PI_TrPerf_Reliab_1 = -PI_TrPerf_Reliab_1 + max(PI_TrPerf_Reliab_1) + 1,
     PI_TrPerf_Reliab_2 = -PI_TrPerf_Reliab_2 + max(PI_TrPerf_Reliab_2) + 1,
     PI_TrPerf_Reliab_3rev = -PI_TrPerf_Reliab_3rev + max(PI_TrPerf_Reliab_3rev) + 1,
@@ -100,7 +93,7 @@ modelDat = plsDat %>%
 
 
 
-modelDat3 = modelDat %>% 
+modelDat4 = modelDat %>% 
   select(
     -matches("anthro_3rev|anthro_1|^trexreliability|^trexhelp_5|pi_trex_reliability|trdisc_reliabilit|pi_trperf_reliab|servicefailure_1|robotSE1|trustingstance_2|robotse3|robotse2_2|robotse2_3|playful1_2rev|playful2_1rev|playful2_3rev")
   ) %>% 
@@ -112,9 +105,6 @@ modelDat3 = modelDat %>%
     
     ## interaction with empathy
     
-    # empathInter1 = MC_serviceFailure_2 * MC_Empathy_1,
-    # empathInter2 = MC_serviceFailure_2 * MC_Empathy_2,
-    # empathInter3 = MC_serviceFailure_2 * MC_Empathy_3rev,
     empathInter4 = MC_serviceFailure_3rev * MC_Empathy_1,
     empathInter5 = MC_serviceFailure_3rev * MC_Empathy_2,
     empathInter6 = MC_serviceFailure_3rev * MC_Empathy_3rev,
@@ -129,23 +119,17 @@ modelDat3 = modelDat %>%
     TreatEmpathInter1 = MC_serviceFailure_2 * empathy,
     TreatEmpathInter2 = MC_serviceFailure_3rev * empathy
     
-    
-    # anthropo = as.factor(anthropo),
-    # empathy = as.factor(empathy)
-    # 
-    
-    
-    
+
     
     
   )
 
 
-names(modelDat3)
+names(modelDat4)
 
 
 
-modelDat3 %>% names()
+modelDat4 %>% names()
 
 
 
@@ -211,12 +195,12 @@ innerplot(techPath, box.size = 0.1)
 
 
 
-
+#### creating the data indices to feed the data into the model the correct way. I relied on pattern matching instead of judgement by eye, that's why there is grep()
 
 # service failure index
 
 
-failIndex = modelDat3 %>% 
+failIndex = modelDat4 %>% 
   names() %>% 
   grep("service", ., ignore.case = TRUE)
 
@@ -224,13 +208,13 @@ failIndex = modelDat3 %>%
 
 # interactions
 
-interAnthroIndex = modelDat3 %>% 
+interAnthroIndex = modelDat4 %>% 
   names() %>% 
   grep("^anthroInter", ., ignore.case = TRUE)
 
 
 
-interEmpathIndex = modelDat3 %>% 
+interEmpathIndex = modelDat4 %>% 
   names() %>% 
   grep("^empathInter", ., ignore.case = TRUE)
 
@@ -238,13 +222,13 @@ interEmpathIndex = modelDat3 %>%
 
 
 
-treatAnthroInterIndex = modelDat3 %>% 
+treatAnthroInterIndex = modelDat4 %>% 
   names() %>% 
   grep("^treatanthroInter", ., ignore.case = TRUE)
 
 
 
-treatEmpathInterIndex = modelDat3 %>% 
+treatEmpathInterIndex = modelDat4 %>% 
   names() %>% 
   grep("^treatempathInter", ., ignore.case = TRUE)
 
@@ -253,14 +237,14 @@ treatEmpathInterIndex = modelDat3 %>%
 
 # For the treatment
 
-anthroTreatIndex = modelDat3 %>% 
+anthroTreatIndex = modelDat4 %>% 
   names() %>% 
   grep("^anthropo$", ., ignore.case = TRUE)
 
 
 # For the treatment
 
-empathTreatIndex = modelDat3 %>% 
+empathTreatIndex = modelDat4 %>% 
   names() %>% 
   grep("^empathy", ., ignore.case = TRUE)
 
@@ -268,70 +252,70 @@ empathTreatIndex = modelDat3 %>%
 # perceived anthropomorphism
 
 
-anthroIndex = modelDat3 %>% 
+anthroIndex = modelDat4 %>% 
   names() %>% 
   grep("anthro.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # perceived empathy
 
-emphaIndex = modelDat3 %>% 
+emphaIndex = modelDat4 %>% 
   names() %>% 
   grep("empathy.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # trusting expectations
 
-trexIndex = modelDat3 %>% 
+trexIndex = modelDat4 %>% 
   names() %>% 
   grep("^trex.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # post-incident trusting expectations
 
-PItrexIndex = modelDat3 %>% 
+PItrexIndex = modelDat4 %>% 
   names() %>% 
   grep("^pi_trex.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # Trusting expectations disconfirmation
 
-trdiscIndex = modelDat3 %>% 
+trdiscIndex = modelDat4 %>% 
   names() %>% 
   grep("trdisc.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # Trusting performance
 
-trPerfIndex = modelDat3 %>% 
+trPerfIndex = modelDat4 %>% 
   names() %>% 
   grep("perf.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # Satisfaction
 
-satisIndex = modelDat3 %>% 
+satisIndex = modelDat4 %>% 
   names() %>% 
   grep("satis.*[1-9]{1}", ., ignore.case = TRUE)
 
 
 # Technology trusting intention
 
-trIntIndex = modelDat3 %>% 
+trIntIndex = modelDat4 %>% 
   names() %>% 
   grep("techtr_intention.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # Trusting intentions
 
-techtrInt = modelDat3 %>% 
+techtrInt = modelDat4 %>% 
   names() %>% 
   grep("techtr_intention.*_[1-9]{1}", ., ignore.case = TRUE)
 
 
 # usage continuation intention
 
-useContIndex = modelDat3 %>% 
+useContIndex = modelDat4 %>% 
   names() %>% 
   grep("cont_int.*_[1-9]{1}", ., ignore.case = TRUE)
 
@@ -339,7 +323,7 @@ useContIndex = modelDat3 %>%
 # actual re-use of the system
 
 
-reUseIndex = modelDat3 %>% 
+reUseIndex = modelDat4 %>% 
   names() %>% 
   grep("reUse", ., ignore.case = TRUE)
 
@@ -347,32 +331,32 @@ reUseIndex = modelDat3 %>%
 ## control vars
 
 
-playfulnessIndex           = modelDat3 %>% 
+playfulnessIndex           = modelDat4 %>% 
   names() %>% 
   grep("playful[1-9]{1}_", ., ignore.case = TRUE)
   
   
-innovativenessIndex        = modelDat3 %>% 
+innovativenessIndex        = modelDat4 %>% 
   names() %>% 
   grep("innov_[1-9]{1}", ., ignore.case = TRUE)
   
   
-robotSEIndex               = modelDat3 %>% 
+robotSEIndex               = modelDat4 %>% 
   names() %>% 
   grep("robotSE[1-9]{1}_", ., ignore.case = TRUE)
   
   
-trustingstanceIndex        = modelDat3 %>% 
+trustingstanceIndex        = modelDat4 %>% 
   names() %>% 
   grep("trustingstance_", ., ignore.case = TRUE)
   
   
-genderNumIndex             = modelDat3 %>% 
+genderNumIndex             = modelDat4 %>% 
   names() %>% 
   grep("genderNum", ., ignore.case = TRUE)
   
   
-eduNumIndex                = modelDat3 %>% 
+eduNumIndex                = modelDat4 %>% 
   names() %>% 
   grep("eduNum", ., ignore.case = TRUE)
   
@@ -383,7 +367,7 @@ eduNumIndex                = modelDat3 %>%
 
 
 
-
+#### assembling the model blocks
 
 
 
@@ -423,31 +407,31 @@ modelModes = rep("A", blockAmount)
 
 # the whole model
 
-modelDat3 = modelDat3 %>% 
+modelDat4 = modelDat4 %>% 
   filter(!is.na(genderNum))
 
 
-anthroModel3 = plspm(Data = modelDat3, path_matrix = techPath, blocks = modelBlocks, modes = modelModes)
+anthroModel4 = plspm(Data = modelDat4, path_matrix = techPath, blocks = modelBlocks, modes = modelModes)
 
 
-anthroModel3$unidim
+anthroModel4$unidim
 
-plot(anthroModel3, what = "loadings")
+plot(anthroModel4, what = "loadings")
 
 # loadings
 
-anthroModel3$outer_model
+anthroModel4$outer_model
 
 
 # cross loadings
 
-crossLoadings = anthroModel3$crossloadings
+crossLoadings = anthroModel4$crossloadings
 
 
 ### plotting the loadings
 
 
-ggplot(data = anthroModel3$outer_model,
+ggplot(data = anthroModel4$outer_model,
        aes(x = name, y = loading, fill = block)) +
   
   geom_bar(
@@ -464,14 +448,14 @@ ggplot(data = anthroModel3$outer_model,
 
 
 
-plot(anthroModel3)
+plot(anthroModel4)
 
 
 
 ### inner model regressions
 
 
-innerModel = anthroModel3$inner_model
+innerModel = anthroModel4$inner_model
 
 
 
@@ -479,7 +463,7 @@ innerModel = anthroModel3$inner_model
 ### effects
 
 
-effects = anthroModel3$effects %>% 
+effects = anthroModel4$effects %>% 
   filter(direct != 0 | indirect != 0)
 
 
@@ -511,10 +495,10 @@ par(op)
 ### inner model summary
 
 
-anthroModel3$inner_summary
+anthroModel4$inner_summary
 
 
 
 ### goodness of fit
 
-anthroModel3$gof
+anthroModel4$gof
