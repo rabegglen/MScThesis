@@ -43,13 +43,15 @@ plsDat = calcDat %>%
       
       grepl("Female", Gender) ~ 2,
       grepl("Male", Gender) ~ 1,
-      is.na(Gender) ~ 0
+      grepl("No Answer", Gender) ~ 0
     )
     
     
     
   )
 
+
+plsDat$Gender %>% unique()
 
 names(plsDat)
 
@@ -99,29 +101,39 @@ modelDat4 = modelDat %>%
   ) %>% 
   mutate(
     
-    ## interaction with antrhopomorphism
+    ## interaction with antrhopomorphism and service failure
     anthroInter1 = MC_serviceFailure_2 * MC_Anthro_2,
     anthroInter2 = MC_serviceFailure_3rev * MC_Anthro_2,
     
-    ## interaction with empathy
+    ## interaction with empathy and service failure
     
     empathInter4 = MC_serviceFailure_3rev * MC_Empathy_1,
     empathInter5 = MC_serviceFailure_3rev * MC_Empathy_2,
     empathInter6 = MC_serviceFailure_3rev * MC_Empathy_3rev,
     
     
-    ## interaction with treatment anthropomorphism
+    ## interaction with treatment anthropomorphism and service failure
     TreatAnthroInter1 = MC_serviceFailure_2 * anthropo,
     TreatAnthroInter2 = MC_serviceFailure_3rev * anthropo,
     
     
-    ## interaction with treatment empathy
+    ## interaction with treatment empathy and service failure
     TreatEmpathInter1 = MC_serviceFailure_2 * empathy,
-    TreatEmpathInter2 = MC_serviceFailure_3rev * empathy
+    TreatEmpathInter2 = MC_serviceFailure_3rev * empathy,
     
+    
+    ## interaction with treatment empathy and anthro
+    
+    treatAnthroEmpath = empathy * anthropo,
+    
+    
+    ## interaction with perceived empathy and anthro
+    
+    anthroEmpath1 = MC_Anthro_2 * MC_Empathy_1,
+    anthroEmpath2 = MC_Anthro_2 * MC_Empathy_2,
+    anthroEmpath3 = MC_Anthro_2 * MC_Empathy_3rev,
 
-    
-    
+
   )
 
 
@@ -136,39 +148,43 @@ modelDat4 %>% names()
 ### create the path matrix with the relevant inner model constructs
 
 
-anthroTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-empathTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-treatAnthroInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-treatEmpathInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-anthro                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-empathy                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-interEmpath            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-interAnthro            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-InitialTechTrustExpect =      c(1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustExpect =      c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-playfulness            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-innovativeness         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-robotSE                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-trustingstance         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-genderNum              =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-eduNum                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0)
-reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+anthroTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroEmpath      =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatEmpathInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+anthro                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathy                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+AnthroEmpath           =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interEmpath            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interAnthro            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+InitialTechTrustExpect =      c(1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustExpect =      c(0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+playfulness            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+innovativeness         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+robotSE                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+trustingstance         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+genderNum              =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+eduNum                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0)
+reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 
 
 techPath = rbind(
   anthroTreat           ,
   empathTreat           ,
+  treatAnthroEmpath     ,
   treatAnthroInter      ,
   treatEmpathInter      ,
   anthro                ,
   empathy               ,
+  AnthroEmpath          ,
   interEmpath           ,
   interAnthro           ,
   servFailure           ,
@@ -191,7 +207,7 @@ techPath = rbind(
 colnames(techPath) = rownames(techPath)
 
 
-innerplot(techPath, box.size = 0.1)
+innerplot(techPath, box.size = 0.05)
 
 
 
@@ -220,8 +236,6 @@ interEmpathIndex = modelDat4 %>%
 
 
 
-
-
 treatAnthroInterIndex = modelDat4 %>% 
   names() %>% 
   grep("^treatanthroInter", ., ignore.case = TRUE)
@@ -232,6 +246,19 @@ treatEmpathInterIndex = modelDat4 %>%
   names() %>% 
   grep("^treatempathInter", ., ignore.case = TRUE)
 
+
+
+
+AnthroEmpathIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^AnthroEmpath", ., ignore.case = TRUE) 
+
+
+
+
+treatAnthroEmpathIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^treatAnthroEmpath$", ., ignore.case = TRUE) 
 
 
 
@@ -374,10 +401,12 @@ eduNumIndex                = modelDat4 %>%
 modelBlocks = list(
   anthroTreatIndex,
   empathTreatIndex,
+  treatAnthroEmpathIndex,
   treatAnthroInterIndex,
   treatEmpathInterIndex,
   anthroIndex,
   emphaIndex,
+  AnthroEmpathIndex,
   interEmpathIndex,
   interAnthroIndex,
   failIndex,
@@ -405,9 +434,15 @@ blockAmount = length(modelBlocks)
 modelModes = rep("A", blockAmount) 
 
 
+modelDat4 %>% 
+  filter_all(
+    any_vars(is.na(.))
+  )
+
+
 # the whole model
 
-modelDat4 = modelDat4 %>% 
+modelDat4 = modelDat4 %>%
   filter(!is.na(genderNum))
 
 
@@ -456,7 +491,7 @@ plot(anthroModel4)
 
 
 innerModel = anthroModel4$inner_model
-
+innerModel
 
 
 
