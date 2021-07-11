@@ -5,3 +5,5 @@
 Data/**
 dataSet.RData
 *.png
+*.rmd
+*.pdf
