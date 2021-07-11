@@ -409,6 +409,7 @@ modelBlocks = list(
   AnthroEmpathIndex,
   interEmpathIndex,
   interAnthroIndex,
+  
   failIndex,
   trexIndex,
   PItrexIndex,
@@ -416,12 +417,14 @@ modelBlocks = list(
   trdiscIndex,
   satisIndex,
   techtrInt,
+  
   playfulnessIndex,   
   innovativenessIndex,
   robotSEIndex,       
   trustingstanceIndex,
   genderNumIndex,     
-  eduNumIndex,        
+  eduNumIndex,
+  
   useContIndex,
   reUseIndex
 )
