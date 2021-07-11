@@ -7,3 +7,5 @@ dataSet.RData
 *.png
 *.rmd
 *.pdf
+*.html
+*.svg
