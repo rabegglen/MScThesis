@@ -1,30 +1,13 @@
-### Descriptive analyses
+### Descriptive analyses and graphics
 
-source("dataPreparation.R")
+# source("dataPreparation.R")
+source("plsPath4.R")
 
-load("./dataSet.RData")
-
-
-
-if(!require("pacman")){
-  
-  install.packages("pacman")
-  
-}
+# load("./dataSet.RData")
 
 
 
-pacman :: p_load(
-  lavaan,
-  lavaanPlot,
-  devtools,
-  install = TRUE
-  
-)
-
-
-
-### some descriptive statistics
+### some simple descriptive statistics
 
 desc = calcDat %>% 
   count(Age_1)
@@ -39,3 +22,18 @@ edu = calcDat %>%
   mutate(
     percentage = n / sum(n) * 100
   )
+
+
+groups = calcDat %>% 
+  count(., group)
+
+### get some heat maps
+
+
+crossloadings = anthroModel4$crossloadings
+
+
+
+
+
+
