@@ -4,6 +4,7 @@ packages = c(
   "tidyverse",
   "readxl",
   "plspm",
+  "reshape2",
   "plsdepot",
   "psych"
 )
