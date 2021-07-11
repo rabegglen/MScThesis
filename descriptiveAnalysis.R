@@ -64,10 +64,18 @@ ggplot(hmCrossl, aes(x = Block, y = Item, fill = `Cross Loading`)) +
   scale_x_discrete(guide = guide_axis(angle = 45)) +
   labs(title = "Cross Loadings for Item Blocks") + 
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_fill_viridis(option = "magma") +
+  paletteer::scale_fill_paletteer_c("viridis::plasma") +
   ggsave(
     width = 30, height = 20, units = "cm", filename = "./graphs/CrossloadingsHeatMap.svg", dpi = 300
   ) 
+
+
+
+## create a correlation heat map of all vars
+
+
+
+
 
 
 ### now the same as a Stargazer Table
