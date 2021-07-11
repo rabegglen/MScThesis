@@ -1,6 +1,6 @@
 ### manipulation checks
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 pacman :: p_load(
   psych,

@@ -1,6 +1,6 @@
 #### the interaction model for the moderation term on the service failure and  also introducing the actual use term. Additionally here with control vars.
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 
 ## introduce a variable which is coding for anthropomorphism and for empathy separately

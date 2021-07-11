@@ -1,6 +1,6 @@
 #### Constructs
 
-source("dataPreparation.R")
+source("./scripts/dataPreparation.R")
 
 
 

@@ -1,6 +1,6 @@
 ### Descriptive analyses and graphics
 
-source("plsPath4.R")
+source("./scripts/plsPath4.R")
 dir.create("./tables")
 dir.create("./graphs")
 

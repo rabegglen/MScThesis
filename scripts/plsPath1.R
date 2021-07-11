@@ -1,6 +1,6 @@
 #### raw PLS Path Model 
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 # devtools :: install_github("gastonstat/plspm")
 

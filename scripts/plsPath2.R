@@ -2,7 +2,7 @@
 
 #### PLS Path Model with constructs alone
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 # devtools :: install_github("gastonstat/plspm")
 

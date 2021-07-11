@@ -2,7 +2,7 @@
 # this is just for pure reference and will not be used for the study
 
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 # devtools :: install_github("gastonstat/plspm")
 

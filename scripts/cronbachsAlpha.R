@@ -3,7 +3,7 @@
 #### this functionality comes with the plspm package anyway
 
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 
 

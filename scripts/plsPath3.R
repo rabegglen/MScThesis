@@ -1,6 +1,6 @@
 #### the interaction model for the moderation term on the service failure and actual use
 
-source("constructs.R")
+source("./scripts/constructs.R")
 
 # devtools :: install_github("gastonstat/plspm")
 
