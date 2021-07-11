@@ -3,14 +3,8 @@
 #### this functionality comes with the plspm package anyway
 
 
-
-# source("dataPreparation.R")
 source("constructs.R")
 
-pacman :: p_load(
-  psych,
-  install = TRUE
-)
 
 
 alphaDat = calcDat %>% 
