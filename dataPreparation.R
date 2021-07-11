@@ -23,6 +23,8 @@ pacman :: p_load(
   plspm,
   plsdepot,
   psych,
+  scico,
+  paletteer,
   reshape2,
   stargazer,
   tinytex,
