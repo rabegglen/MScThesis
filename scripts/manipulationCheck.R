@@ -17,7 +17,22 @@ pacman :: p_load(
 
 
 MCdat = calcDat %>% 
-  select(matches("group|^MC_"))
+  select(matches("group|^MC_")) %>% 
+  mutate(
+    anthropo = case_when(
+      
+      grepl("^A", group) ~ 1,
+      grepl("^N", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    empathy = case_when(
+      
+      grepl("E$", group) ~ 1,
+      grepl("N$", group) ~ 0
+      
+    ) %>% as.factor(),
+  )
 
 
 
@@ -29,7 +44,7 @@ anthro = MCdat %>%
   select(matches("group|anthro")) %>% 
   
   mutate_at(
-    vars(-matches("group")),
+    vars(-matches("group|anthropo")),
     list(as.numeric)
   ) %>% 
   
@@ -38,14 +53,15 @@ anthro = MCdat %>%
   ) %>% 
   
   mutate(
-    MCAnthro = rowMeans(select(., matches("anthro"))) ### creating the mean to simplify the variable
-  )
+    MCAnthro = rowMeans(select(., matches("anthro_"))) ### creating the mean to simplify the variable
+  ) 
 
 
 
 
 # Kurskal Test
-kruskal.test(MCAnthro ~ group, data=anthro) # significant
+kruskal.test(MCAnthro ~ anthropo, data=anthro) # significant
+anthromod = lm(MCAnthro ~ anthropo, data = anthro) 
 
 
 
@@ -57,7 +73,7 @@ empath = MCdat %>%
   select(matches("group|empath")) %>% 
   
   mutate_at(
-    vars(-matches("group")),
+    vars(-matches("group|^empathy$")),
     list(as.numeric)
   ) %>% 
   
@@ -66,20 +82,33 @@ empath = MCdat %>%
   ) %>% 
   
   mutate(
-    MCEmpath = rowMeans(select(., matches("empath")))
+    MCEmpath = rowMeans(select(., matches("mc_empath")))
   )
 
 
 
 
 # Kurskal Test
-kruskal.test(MCEmpath ~ group, data=empath) # significant
+kruskal.test(MCEmpath ~ empathy, data=empath) # significant
 
 
 # see what an LM can tell us? 
-lm(MCEmpath ~ group, data = empath) %>% 
-  summary()
-
+empathmod = lm(MCEmpath ~ empathy, data = empath) 
 
  
+
+
+### make a regression table
+
+stargazer(
+  type = "html",
+  title = "Manipulation Check",
+  anthromod,
+  empathmod,
+  align = TRUE,
+  out = "./tables/ManipulationCheck.html"
+)
+
+
+
  
