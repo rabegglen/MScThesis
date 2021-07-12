@@ -15,14 +15,14 @@ plsDat = calcDat %>%
       grepl("^A", group) ~ 1,
       grepl("^N", group) ~ 0
       
-    ),
+    ) %>% as.factor(),
     
     empathy = case_when(
       
       grepl("E$", group) ~ 1,
       grepl("N$", group) ~ 0
       
-    ),
+    ) %>% as.factor(),
     
     
     eduNum = case_when(
@@ -44,7 +44,7 @@ plsDat = calcDat %>%
       grepl("Female", Gender) ~ 2,
       grepl("Male", Gender) ~ 1,
       grepl("No Answer", Gender) ~ 0
-    )
+    ) %>% as.factor()
     
     
     
@@ -97,29 +97,33 @@ modelDat = plsDat %>%
 
 modelDat4 = modelDat %>% 
   select(
-    -matches("anthro_3rev|anthro_1|^trexreliability|^trexhelp_5|pi_trex_reliability|trdisc_reliabilit|pi_trperf_reliab|servicefailure_1|robotSE1|trustingstance_2|robotse3|robotse2_2|robotse2_3|playful1_2rev|playful2_1rev|playful2_3rev")
+    -matches("anthro_3rev|anthro_1|^trexreliability|^trexhelp_5|pi_trex_reliability|trdisc_reliabilit|pi_trperf_reliab|servicefailure_1|servicefailure_3|robotSE1|trustingstance_2|robotse3|robotse2_2|robotse2_3|playful1_2rev|playful2_1rev|playful2_3rev|innov_3rev")
   ) %>% 
   mutate(
     
     ## interaction with antrhopomorphism and service failure
     anthroInter1 = MC_serviceFailure_2 * MC_Anthro_2,
-    anthroInter2 = MC_serviceFailure_3rev * MC_Anthro_2,
+    # anthroInter2 = MC_serviceFailure_3rev * MC_Anthro_2,
     
     ## interaction with empathy and service failure
     
-    empathInter4 = MC_serviceFailure_3rev * MC_Empathy_1,
-    empathInter5 = MC_serviceFailure_3rev * MC_Empathy_2,
-    empathInter6 = MC_serviceFailure_3rev * MC_Empathy_3rev,
+    
+    
+    
+    
+    empathInter4 = MC_serviceFailure_2 * MC_Empathy_1,
+    empathInter5 = MC_serviceFailure_2 * MC_Empathy_2,
+    empathInter6 = MC_serviceFailure_2 * MC_Empathy_3rev,
     
     
     ## interaction with treatment anthropomorphism and service failure
     TreatAnthroInter1 = MC_serviceFailure_2 * anthropo,
-    TreatAnthroInter2 = MC_serviceFailure_3rev * anthropo,
+    # TreatAnthroInter2 = MC_serviceFailure_3rev * anthropo,
     
     
     ## interaction with treatment empathy and service failure
     TreatEmpathInter1 = MC_serviceFailure_2 * empathy,
-    TreatEmpathInter2 = MC_serviceFailure_3rev * empathy,
+    # TreatEmpathInter2 = MC_serviceFailure_3rev * empathy,
     
     
     ## interaction with treatment empathy and anthro
