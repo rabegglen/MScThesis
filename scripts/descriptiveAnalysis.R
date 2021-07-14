@@ -162,3 +162,48 @@ unidim = anthroModel4$unidim %>%
 unidim %>% 
   stargazer(., type = "html", title = "Unidimensionality", summary = FALSE, out = "tables/unidim.html", rownames = FALSE)
 
+
+
+# tables for paths
+
+
+anthroModel4$inner_model
+
+anthroModel4$inner_summary %>% 
+  mutate(
+    Parameter = rownames(.)
+  ) %>% 
+  select(
+    Parameter, R2, AVE, Block_Communality
+  ) %>% 
+
+  filter(
+    R2 > 0
+  ) %>% 
+  
+  stargazer(., type = "html", title = "Inner Model Summary", summary = FALSE, out = "tables/InnerModel.html", rownames = FALSE)
+
+anthroModel4$effects %>% 
+  filter(direct > 0)
+
+## quick look at the dates
+
+
+temp = calcDat %>% 
+  mutate(
+    RecordedDate = as.numeric(RecordedDate),
+    RecordedDate = as.POSIXct(
+      RecordedDate * 3600 * 24,
+      origin = "1899-12-30"
+    )
+  )
+
+
+
+
+
+
+
+
+
+
