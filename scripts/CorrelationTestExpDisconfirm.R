@@ -17,6 +17,6 @@ correlation = modelDat4 %>%
   select(matches("mean_")) 
 
 
-result = corr.test(correlation$mean_PI_TrustingExpectations, correlation$mean_PI_TrustingDisconfirm)
+result = corr.test(correlation$mean_PI_TrustingExpectations, correlation$mean_PI_TrustingDisconfirm, method = "pearson")
 
 result$p.adj# significantly correlated
