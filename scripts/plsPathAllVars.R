@@ -449,27 +449,27 @@ ModelDatAll = ModelDatAll %>%
   filter(!is.na(genderNum))
 
 
-anthroModel4 = plspm(Data = ModelDatAll, path_matrix = techPath, blocks = modelBlocks, modes = modelModes)
+anthroModelAll = plspm(Data = ModelDatAll, path_matrix = techPath, blocks = modelBlocks, modes = modelModes)
 
 
-anthroModel4$unidim
+anthroModelAll$unidim
 
-plot(anthroModel4, what = "loadings")
+plot(anthroModelAll, what = "loadings")
 
 # loadings
 
-anthroModel4$outer_model
+anthroModelAll$outer_model
 
 
 # cross loadings
 
-crossLoadings = anthroModel4$crossloadings
+crossLoadings = anthroModelAll$crossloadings
 
 
 ### plotting the loadings
 
 
-ggplot(data = anthroModel4$outer_model,
+ggplot(data = anthroModelAll$outer_model,
        aes(x = name, y = loading, fill = block)) +
   
   geom_bar(
@@ -486,14 +486,14 @@ ggplot(data = anthroModel4$outer_model,
 
 
 
-plot(anthroModel4)
+plot(anthroModelAll)
 
 
 
 ### inner model regressions
 
 
-innerModel = anthroModel4$inner_model
+innerModel = anthroModelAll$inner_model
 innerModel
 
 
@@ -501,7 +501,7 @@ innerModel
 ### effects
 
 
-effects = anthroModel4$effects %>% 
+effects = anthroModelAll$effects %>% 
   filter(direct != 0 | indirect != 0)
 
 
@@ -533,11 +533,11 @@ par(op)
 ### inner model summary
 
 
-anthroModel4$inner_summary
+anthroModelAll$inner_summary
 
 
 
 ### goodness of fit
 
-anthroModel4$gof
+anthroModelAll$gof
 
