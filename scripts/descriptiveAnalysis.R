@@ -57,7 +57,7 @@ hmCrossl = crossloadings %>%
 
 
 
-## create raster plot
+## create raster plot for the heat map.
 
 # make nicer names for the items for the graph
 
