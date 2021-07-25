@@ -66,7 +66,7 @@ names(plsDat)
 modelDat = plsDat %>%
   select(
     # control variables
-    matches("innov|playful|trustingstance|robotse|edunum|gendernum"),
+    matches("innov|playful|trustingstance|robotse|edunum|gendernum|trustingst_agent"),
     # service failure
     matches("service"),
     # the treatment
@@ -175,9 +175,9 @@ robotSE                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 trustingstance         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 genderNum              =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 eduNum                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+# trustingStanceAgent    =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0)
 reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
 
 
 techPath = rbind(
@@ -201,6 +201,7 @@ techPath = rbind(
   playfulness           ,
   innovativeness        ,
   robotSE               ,
+  # trustingStanceAgent   ,
   trustingstance        ,
   genderNum             ,
   eduNum                ,
@@ -381,6 +382,11 @@ trustingstanceIndex        = modelDat4 %>%
   names() %>% 
   grep("trustingstance_", ., ignore.case = TRUE)
   
+
+# trustingStanceAgentIndex   = modelDat4 %>% 
+#   names() %>% 
+#   grep("TrustingSt_Agent_", ., ignore.case = TRUE)
+
   
 genderNumIndex             = modelDat4 %>% 
   names() %>% 
@@ -424,7 +430,8 @@ modelBlocks = list(
   
   playfulnessIndex,   
   innovativenessIndex,
-  robotSEIndex,       
+  robotSEIndex,  
+  # trustingStanceAgentIndex,
   trustingstanceIndex,
   genderNumIndex,     
   eduNumIndex,
