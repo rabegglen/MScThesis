@@ -3,6 +3,7 @@
 source("./scripts/plsPath4.R")
 dir.create("./tables")
 dir.create("./graphs")
+dir.create("./markdown")
 
 ### some simple descriptive statistics
 
