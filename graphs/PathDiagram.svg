@@ -1,0 +1,2328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="430mm"
+   height="250mm"
+   viewBox="0 0 430 250"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="PathDiagram.svg"
+   inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\researchModel2.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2941"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2939"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2091"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2089"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2027"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2025"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1969"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1967"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1917"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1915"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1798"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1796"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4708"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       id="linearGradient4528"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#003ca6;stop-opacity:1;"
+         offset="0"
+         id="stop4526" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4522"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4520" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-3.8366667e-6,-39.999997)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-4-8-7"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5057-7"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5055-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4708-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-6"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       gradientTransform="translate(1.2953333e-5,-40)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-4-8-7-0-6-2-1-5-1"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-57-6"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-124.01307,-80.892238)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-0"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-124.01306,-80.892234)" />
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-3"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-0-4"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-6-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-1-9"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-8-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-8"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-7"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-4"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-5"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-42"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-7-4"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-4-15"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-9"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-1"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-1-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-3-7"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-0"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-6"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-0-8"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-1-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-0-8-3"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-1-2-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-1-9-2"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-8-9-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-57-6-1"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-124.01307,-80.892244)" />
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-1-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-3-0"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-57-6-1-9"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-124.01307,-80.892237)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-57-6-2"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-124.01307,-80.892237)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4528"
+       id="linearGradient4530-0-0"
+       x1="21.231562"
+       y1="124.34388"
+       x2="80.063583"
+       y2="124.34388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-124.01306,-80.892237)" />
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-1-4-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-3-0-8"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-1-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-3-6"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1060-59-1-3-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1058-5-3-6-9"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2941-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2939-8"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-9-98"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-2-82"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-9-6"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-2-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-4-0-8-9-6-4"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-1-6-6-2-1-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-7-6"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-4-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker2569-6-7-6-0"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2567-3-4-4-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="-201.96448"
+     inkscape:cy="378.67579"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="3440"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4566" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-47)">
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-4-8-7);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-2-6-1"
+       width="58.208336"
+       height="29.49279"
+       x="178.5105"
+       y="65.222359"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.09415582;stroke:#000000;stroke-width:0.26499999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.52999995, 0.52999995;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect10849"
+       width="114.78535"
+       height="37.428638"
+       x="287.27417"
+       y="64.740471"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1798)"
+       d="M 178.76438,94.699133 V 165.45358"
+       id="path1788"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.35999968, 0.26499999;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 124.67625,105.10386 v 73.6164"
+       id="path2643"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.35999946, 0.26499998;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 124.72342,183.94384 v 31.18732"
+       id="path2643-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.44693756px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="257.81"
+       y="285.48941"
+       id="text2662-3"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan2660-2"
+         x="257.81"
+         y="285.48941"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;font-family:Arial;-inkscape-font-specification:Arial;fill:#808080;stroke-width:0.26458332">After Information Failure</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-0);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-9"
+       width="58.208328"
+       height="10.813576"
+       x="94.894318"
+       y="86.591202"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="122.06184"
+       y="95.183144"
+       id="text4570-6"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-4"
+         x="122.06184"
+         y="95.183144"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Anthropomoprhism</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-57-6);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-01-2"
+       width="58.147751"
+       height="10.439367"
+       x="94.894318"
+       y="76.151848"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="121.93028"
+       y="84.099068"
+       id="text4570-3-2"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-6-9"
+         x="121.93028"
+         y="84.099068"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Empathy</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="86.246864"
+       y="73.202728"
+       id="text10868-5-7-6"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan10866-6-7-2"
+         x="86.246864"
+         y="73.202728"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">System/Manipulation</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.09415582;stroke:#000000;stroke-width:0.26500002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect10849-3-6-9"
+       width="137.48795"
+       height="44.181534"
+       x="18.765669"
+       y="59.602604"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59)"
+       d="M 94.87907,79.804264 55.352644,164.96172"
+       id="path1235-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-1)"
+       d="M 94.84681,92.915624 55.352729,164.98218"
+       id="path1235-2-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="346.12137"
+       y="182.61047"
+       id="text3456-0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="346.12137"
+         y="182.61047"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55626822px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan3667-3">Intention of Usage</tspan><tspan
+         sodipodi:role="line"
+         x="346.12137"
+         y="189.5558"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55626822px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9097">Continuation</tspan><tspan
+         sodipodi:role="line"
+         x="346.12137"
+         y="195.39021"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55626822px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan3509-7" /><tspan
+         sodipodi:role="line"
+         x="346.12137"
+         y="200.59921"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55626822px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan3458-4" /></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.00649348;stroke:#000000;stroke-width:0.26499996;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9198"
+       width="407.69556"
+       height="238.54248"
+       x="13.521221"
+       y="54.582127"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <ellipse
+       style="opacity:1;vector-effect:none;fill:#e6e6e6;fill-opacity:0.33766234;stroke:#000000;stroke-width:0.26499999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2679-1-2"
+       cx="396.97662"
+       cy="149.51695"
+       rx="15.567575"
+       ry="12.926044"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="390.60889"
+       y="153.05731"
+       id="text3456-9-1"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="390.60889"
+         y="153.05731"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.55626822px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan3458-3-1">Actual Use</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-0-4)"
+       d="m 378.11115,168.11939 6.94872,-9.60243"
+       id="path2559-6-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="352.4234"
+       y="109.88376"
+       id="text4592-7-5-5-63-1"><tspan
+         sodipodi:role="line"
+         x="352.4234"
+         y="119.773"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332"
+         id="tspan7763-8-8-9" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.25609493px;line-height:2.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="343.55634"
+       y="72.659348"
+       id="text1438"
+       transform="scale(1.0000819,0.9999181)"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan1436"
+         x="343.55634"
+         y="72.659348"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Control Variables</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="60.35532"
+       y="178.41295"
+       id="text3456-3-7-8-6"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="60.35532"
+         y="178.41295"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9095-3">Initial Technology</tspan><tspan
+         sodipodi:role="line"
+         x="60.98135"
+         y="184.05603"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1475">Trusting </tspan><tspan
+         sodipodi:role="line"
+         x="60.35532"
+         y="189.69911"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1477">Expectation</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458338px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-4)"
+       d="m 185.04248,180.90713 h 18.48057"
+       id="path2559-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="164.38576"
+       y="176.07286"
+       id="text3456-3-7-8-6-8"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="164.38576"
+         y="176.07286"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9095-3-9">Post-incident</tspan><tspan
+         sodipodi:role="line"
+         x="164.38576"
+         y="181.71594"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10826"> Technology</tspan><tspan
+         sodipodi:role="line"
+         x="165.0118"
+         y="187.35902"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1475-0">Trusting </tspan><tspan
+         sodipodi:role="line"
+         x="164.38576"
+         y="193.00212"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1477-6">Expectation</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-7)"
+       d="M 244.20574,180.97589 H 261.2278"
+       id="path2559-2-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="220.87024"
+       y="175.6218"
+       id="text3456-3-7-8-6-0-5"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="221.49628"
+         y="175.6218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1477-9-6">Post-incident </tspan><tspan
+         sodipodi:role="line"
+         x="220.87024"
+         y="181.26488"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4055-8">Technology</tspan><tspan
+         sodipodi:role="line"
+         x="220.87024"
+         y="186.90796"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4057-6">Trusting</tspan><tspan
+         sodipodi:role="line"
+         x="220.87024"
+         y="192.55106"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4059-4">Performance</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.2645834, 1.05833358;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker2569-6-4-8)"
+       d="m 176.45412,195.62942 31.88951,21.23196"
+       id="path2559-2-4-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="225.55827"
+       y="220.41862"
+       id="text3456-3-7-8-6-0-8-3"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="226.18431"
+         y="220.41862"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1477-9-5-1">Post-incident </tspan><tspan
+         sodipodi:role="line"
+         x="225.55827"
+         y="226.06171"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10830">Technology</tspan><tspan
+         sodipodi:role="line"
+         x="225.55827"
+         y="231.70479"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4066-0">Trusting</tspan><tspan
+         sodipodi:role="line"
+         x="225.55827"
+         y="237.34789"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4068-0">Disconfirmation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="277.64847"
+       y="179.26807"
+       id="text3456-3-7-8-6-0-4-9"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="278.27451"
+         y="179.26807"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1477-9-3-8">Post-incident </tspan><tspan
+         sodipodi:role="line"
+         x="277.64847"
+         y="184.91115"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4075-8">Technology</tspan><tspan
+         sodipodi:role="line"
+         x="277.64847"
+         y="190.55423"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4077-7">Satisfaction</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8)"
+       d="m 248.95041,217.0376 31.88951,-21.23197"
+       id="path2559-2-4-5-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-1-9)"
+       d="m 228.62632,195.43044 v 12.71912"
+       id="path2559-2-9-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2569-6-5)"
+       d="M 81.535057,180.97591 H 148.87107"
+       id="path2559-2-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.2645834, 1.05833358;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker2569-6-7-4)"
+       d="M 301.44271,180.97589 H 315.8145"
+       id="path2559-2-1-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-9)"
+       d="m 367.06384,96.293333 25.10199,40.515807"
+       id="path2559-2-4-5-9-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="55.638435"
+       y="277.13052"
+       id="text3456-3-7-8-6-8-4"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="56.601559"
+         y="277.13052"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
+         id="tspan1477-6-9">Before </tspan><tspan
+         sodipodi:role="line"
+         x="55.638435"
+         y="285.81219"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
+         id="tspan8016">Information Failure</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-8)"
+       d="m 153.01971,80.877135 25.4626,28.175535"
+       id="path1235-2-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-1-5)"
+       d="m 153.0485,91.093416 25.43381,17.959254"
+       id="path1235-2-7-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.16720104px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="304.48907"
+       y="227.39528"
+       id="text3456-3-7-8-6-0-5-4"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="305.11511"
+         y="227.39528"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1477-9-6-4">Post-incident </tspan><tspan
+         sodipodi:role="line"
+         x="304.48907"
+         y="233.03836"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan4059-4-6">Technology</tspan><tspan
+         sodipodi:role="line"
+         x="304.48907"
+         y="238.68144"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan5032">Trusting</tspan><tspan
+         sodipodi:role="line"
+         x="304.48907"
+         y="244.32454"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.51446772px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan5034">Intention</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-0)"
+       d="m 309.42698,216.95142 19.85139,-20.58573"
+       id="path2559-2-4-5-9-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.2645834, 1.0583336;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-6)"
+       d="m 249.29241,234.3704 39.52019,2.34791"
+       id="path2559-2-4-5-9-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-0-8)"
+       d="m 283.00883,195.62253 20.51629,21.14589"
+       id="path2559-2-4-5-9-5-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-0-8-3)"
+       d="m 260.51836,211.12342 27.98091,25.00095"
+       id="path2559-2-4-5-9-5-5-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 243.93434,195.57833 14.35756,13.27009"
+       id="path7988"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 182.417,166.00832 V 153.19207"
+       id="path2559-2-9-9-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 182.39013,153.32156 H 282.55094"
+       id="path2559-2-9-9-7-9-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-1-9-2)"
+       d="m 282.41909,153.18673 v 12.26891"
+       id="path2559-2-9-9-90"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="50.698498"
+       y="96.224945"
+       id="text4570-6-1"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-4-5"
+         x="50.698498"
+         y="96.224945"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Anthropomoprhism</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-57-6-1);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-01-2-9"
+       width="58.147751"
+       height="21.97653"
+       x="22.303946"
+       y="75.773865"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="50.566994"
+       y="84.099068"
+       id="text4570-3-2-6"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-6-9-1"
+         x="50.566994"
+         y="84.099068"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Empathy</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="48.648331"
+       y="90.626656"
+       id="text1461"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan1459"
+         x="48.648331"
+         y="90.626656"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">x</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-1-4)"
+       d="M 52.957048,98.031749 52.704261,164.80435"
+       id="path1235-2-7-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-0-0);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-9-8"
+       width="58.208328"
+       height="10.813576"
+       x="111.65828"
+       y="242.4521"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="138.51729"
+       y="253.5175"
+       id="text4570-6-4"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-4-9"
+         x="138.51729"
+         y="253.5175"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Anthropomoprhism</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-57-6-2);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-01-2-99"
+       width="30.007196"
+       height="10.439368"
+       x="139.84624"
+       y="232.01276"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="151.92896"
+       y="242.43343"
+       id="text4570-3-2-4"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-6-9-8"
+         x="151.92896"
+         y="242.43343"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Empathy</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="80.303673"
+       y="231.53709"
+       id="text10868-5-7-6-5"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan10866-6-7-2-0"
+         x="80.303673"
+         y="231.53709"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">Perceived</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.09415582;stroke:#000000;stroke-width:0.26500002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect10849-3-6-9-1"
+       width="137.48795"
+       height="44.181534"
+       x="36.142399"
+       y="217.29626"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="67.154076"
+       y="254.55933"
+       id="text4570-6-1-6"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-4-5-0"
+         x="67.154076"
+         y="254.55933"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Anthropomoprhism</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#linearGradient4530-57-6-1-9);stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4518-01-2-9-7"
+       width="58.147751"
+       height="21.97653"
+       x="39.115154"
+       y="232.01276"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="67.022568"
+       y="242.43343"
+       id="text4570-3-2-6-5"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         id="tspan4568-6-9-1-3"
+         x="67.022568"
+         y="242.43343"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25080156px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">Empathy</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="65.103912"
+       y="248.96103"
+       id="text1461-6"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan1459-2"
+         x="65.103912"
+         y="248.96103"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.94533491px;font-family:arial;-inkscape-font-specification:arial;stroke-width:0.26458332">x</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.35999968, 0.26499999;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 124.72357,264.83853 V 287.4502"
+       id="path2643-7-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-1-4-0)"
+       d="m 56.031967,232.13179 0.25278,-36.84642"
+       id="path1235-2-7-1-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="56.224155"
+       y="215.97487"
+       id="text2935"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933"
+         x="56.224155"
+         y="215.97487"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.50†</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999996;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-1-3)"
+       d="M 139.75144,232.01275 81.341453,194.73817"
+       id="path1235-2-7-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26499999, 1.05999995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1060-59-1-3-8)"
+       d="M 91.933518,221.00353 72.740076,195.22297"
+       id="path1235-2-7-4-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.26500002, 0.52999996;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 111.34933,247.54741 98.440489,229.33878"
+       id="path1235-2-7-4-4-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="98.336426"
+       y="181.1953"
+       id="text2935-4"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1"
+         x="98.336426"
+         y="181.1953"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.51***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="177.55371"
+       y="143.97977"
+       id="text2935-4-0"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-0"
+         x="177.55371"
+         y="143.97977"
+         style="font-size:5.55626822px;stroke-width:0.26458332">- 0.31**</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 142.70572,231.82812 V 184.51034"
+       id="path2559-2-3-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 142.70573,176.21701 V 129.87042"
+       id="path2559-2-3-5-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2941)"
+       d="M 142.70572,129.99988 H 178.1545"
+       id="path2559-2-3-5-1-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 132.10258,242.32283 V 184.49607"
+       id="path2559-2-3-5-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 132.10258,176.85402 V 122.65304"
+       id="path2559-2-3-5-3-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2941-6)"
+       d="m 132.10258,122.78253 h 46.17737"
+       id="path2559-2-3-5-1-3-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="134.51212"
+       y="122.78837"
+       id="text2935-9"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-3"
+         x="134.51212"
+         y="122.78837"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.20*</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="144.18921"
+       y="137.25856"
+       id="text2935-6"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-30"
+         x="144.18921"
+         y="137.25856"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.19†</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="182.7016"
+       y="181.96361"
+       id="text2935-4-2"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6"
+         x="182.7016"
+         y="181.96361"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.67***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="207.51762"
+       y="205.86119"
+       id="text2935-4-2-2"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-7"
+         x="207.51762"
+         y="205.86119"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.62***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="218.03685"
+       y="153.83966"
+       id="text2935-9-0"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-3-0"
+         x="218.03685"
+         y="153.83966"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.18*</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="241.51675"
+       y="182.30177"
+       id="text2935-4-0-0"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-0-1"
+         x="241.51675"
+         y="182.30177"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.25**</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="257.18375"
+       y="204.35513"
+       id="text2935-9-7"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-3-1"
+         x="257.18375"
+         y="204.35513"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.20*</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="265.3624"
+       y="223.41702"
+       id="text2935-4-2-7"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4"
+         x="265.3624"
+         y="223.41702"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.43***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="287.12854"
+       y="207.78867"
+       id="text2935-4-2-7-8"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4-9"
+         x="287.12854"
+         y="207.78867"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.26***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="313.73166"
+       y="215.9756"
+       id="text2935-4-2-7-8-1"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4-9-7"
+         x="313.73166"
+         y="215.9756"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.55***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="376.43399"
+       y="171.92949"
+       id="text2935-4-2-7-8-1-4"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4-9-7-4"
+         x="376.43399"
+         y="171.92949"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.26***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="298.11392"
+       y="89.098389"
+       id="text3456-3-7-8-6-0-4-9-4"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="298.49918"
+         y="89.098389"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10574">Tech. </tspan><tspan
+         sodipodi:role="line"
+         x="298.11392"
+         y="92.664574"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578">Playfulness</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="316.66656"
+       y="89.098389"
+       id="text3456-3-7-8-6-0-4-9-4-9"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="317.05182"
+         y="89.098389"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10574-3">Tech. </tspan><tspan
+         sodipodi:role="line"
+         x="316.66656"
+         y="92.664574"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-8">Innovativeness</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="334.80579"
+       y="89.098389"
+       id="text3456-3-7-8-6-0-4-9-4-5"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="335.19104"
+         y="89.098389"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10574-1">Robot </tspan><tspan
+         sodipodi:role="line"
+         x="334.80579"
+         y="92.664574"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-6">Self-Efficacy</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="348.79889"
+       y="89.098389"
+       id="text3456-3-7-8-6-0-4-9-4-5-4"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="349.18414"
+         y="89.098389"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10574-1-8">Trusting </tspan><tspan
+         sodipodi:role="line"
+         x="348.79889"
+         y="92.664574"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-6-8">Stance</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="360.92923"
+       y="91.702888"
+       id="text3456-3-7-8-6-0-4-9-4-5-4-7"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="360.92923"
+         y="91.702888"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-6-8-5">Gender</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="374.10138"
+       y="91.702888"
+       id="text3456-3-7-8-6-0-4-9-4-5-7"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437821)"><tspan
+         sodipodi:role="line"
+         x="374.10138"
+         y="91.702888"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-6-6">Education</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-9-98)"
+       d="m 385.17019,96.309504 9.66217,39.984226"
+       id="path2559-2-4-5-9-7-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="384.98337"
+       y="121.09736"
+       id="text2935-4-2-7-8-1-4-6"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4-9-7-4-9"
+         x="384.98337"
+         y="121.09736"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.22***</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="355.58972"
+       y="121.2834"
+       id="text2935-4-2-7-8-1-4-6-9"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4-9-7-4-9-2"
+         x="355.58972"
+         y="121.2834"
+         style="font-size:5.55626822px;stroke-width:0.26458332">-0.15*</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-9-6)"
+       d="m 342.93867,96.384303 13.96698,65.720207"
+       id="path2559-2-4-5-9-7-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="347.08871"
+       y="138.37749"
+       id="text2935-4-2-7-8-1-4-6-3"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-1-6-4-9-7-4-9-26"
+         x="347.08871"
+         y="138.37749"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.21***</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-4-0-8-9-6-4)"
+       d="m 321.75036,96.197847 24.09672,65.720213"
+       id="path2559-2-4-5-9-7-7-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="311.6312"
+       y="127.42645"
+       id="text2935-0"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan2933-34"
+         x="311.6312"
+         y="127.42645"
+         style="font-size:5.55626822px;stroke-width:0.26458332">0.11†</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="304.91669"
+       y="78.303001"
+       id="text13930"
+       transform="scale(1.0158697,0.98437821)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         x="304.91669"
+         y="78.303001"
+         style="font-size:4.16720104px;stroke-width:0.26458332"
+         id="tspan1595">only significant relationships displayed</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2569-6-7-6)"
+       d="m 323.91614,263.61635 h 24.57825"
+       id="path2559-2-1-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458341;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.2645834, 1.05833356;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker2569-6-7-6-0)"
+       d="m 323.91614,270.29757 h 24.57825"
+       id="path2559-2-1-5-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.01670027px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="371.86108"
+       y="268.53958"
+       id="text3456-3-7-8-6-0-4-9-4-9-0"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0145202,0.98568765)"><tspan
+         sodipodi:role="line"
+         x="371.86108"
+         y="268.53958"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.01670027px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-8-0">Significant Relationship</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.01670027px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="376.11096"
+       y="275.31787"
+       id="text3456-3-7-8-6-0-4-9-4-9-0-3"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0145202,0.98568765)"><tspan
+         sodipodi:role="line"
+         x="376.11096"
+         y="275.31787"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.01670027px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-8-0-0">Non-significant Relationship</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.06262589px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="319.60889"
+       y="282.88464"
+       id="text14783"
+       transform="scale(1.0145202,0.98568762)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan14781"
+         x="319.60889"
+         y="282.88464"
+         style="font-size:5.52296352px;stroke-width:0.26458332">***p&lt;0.001</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.06262589px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="348.32825"
+       y="282.88501"
+       id="text14783-8"
+       transform="scale(1.0145202,0.98568762)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan14781-1"
+         x="348.32825"
+         y="282.88501"
+         style="font-size:5.52296352px;stroke-width:0.26458332">**p&lt;0.01</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.06262589px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="372.10254"
+       y="282.88501"
+       id="text14783-8-9"
+       transform="scale(1.0145202,0.98568762)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan14781-1-8"
+         x="372.10254"
+         y="282.88501"
+         style="font-size:5.52296352px;stroke-width:0.26458332">*p&lt;0.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.06262589px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="390.84433"
+       y="282.88501"
+       id="text14783-8-9-8"
+       transform="scale(1.0145202,0.98568762)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan14781-1-8-9"
+         x="390.84433"
+         y="282.88501"
+         style="font-size:5.52296352px;stroke-width:0.26458332">†p&lt;0.1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.06262589px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="319.11829"
+       y="290.93799"
+       id="text14783-8-7"
+       transform="scale(1.0145202,0.98568761)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         id="tspan14781-1-4"
+         x="319.11829"
+         y="290.93799"
+         style="font-size:5.52296352px;stroke-width:0.26458332">x = Interaction between two Variables</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#69abfe;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1575"
+       width="40.159966"
+       height="29.482141"
+       x="41.181488"
+       y="165.25603"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#69abfe;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1575-4"
+       width="35.435268"
+       height="29.482143"
+       x="149.24869"
+       y="166.35126"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#69abfe;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1575-48"
+       width="39.785229"
+       height="29.482143"
+       x="204.14911"
+       y="166.09618"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#69abfe;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1575-2"
+       width="39.828743"
+       height="29.482143"
+       x="208.91341"
+       y="210.05727"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#69abfe;stroke-width:0.69999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1575-6"
+       width="37.954994"
+       height="29.08124"
+       x="261.82254"
+       y="166.13033"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#69d48f;stroke-width:0.69999993;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1448"
+       width="39.876488"
+       height="26.590338"
+       x="289.15897"
+       y="217.42198"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <ellipse
+       style="opacity:1;vector-effect:none;fill:#e6e6e6;fill-opacity:0.33766234;stroke:#69d48f;stroke-width:0.76499999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2679-7"
+       cx="351.95255"
+       cy="181.35455"
+       rx="35.340775"
+       ry="19.308758"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628"
+       width="16.205729"
+       height="13.288451"
+       x="294.82144"
+       y="82.970985"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628-0"
+       width="20.861063"
+       height="13.288451"
+       x="311.01538"
+       y="82.97097"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628-0-8"
+       width="16.85202"
+       height="13.288451"
+       x="331.87643"
+       y="82.97097"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628-0-87"
+       width="11.840716"
+       height="13.288451"
+       x="348.72845"
+       y="82.97097"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628-0-7"
+       width="11.907534"
+       height="13.288451"
+       x="360.56918"
+       y="82.97097"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628-0-3"
+       width="15.58249"
+       height="13.288451"
+       x="372.47672"
+       y="82.97097"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1678"
+       width="105.43783"
+       height="39.288624"
+       x="315.77893"
+       y="253.83597"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="207.63928"
+       y="81.850517"
+       id="text3456-3-7-0"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         x="207.63928"
+         y="81.850517"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2772">Information Failure</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.60771706;stroke:#000000;stroke-width:0.29999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1628-0-3-7"
+       width="9.3016558"
+       height="13.288451"
+       x="388.0592"
+       y="82.97097"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;line-height:1.25;font-family:'TradeGothic LT CondEighteen';-inkscape-font-specification:'TradeGothic LT CondEighteen';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="386.60309"
+       y="91.702888"
+       id="text3456-3-7-8-6-0-4-9-4-5-7-5"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"
+       inkscape:export-filename="C:\Users\Roman\Desktop\MSc Thesis\ResearchModel9.png"
+       transform="scale(1.0158697,0.98437822)"><tspan
+         sodipodi:role="line"
+         x="386.60309"
+         y="91.702888"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.77813411px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan10578-6-6-1">Age</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.41800213px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458332"
+       x="291.37317"
+       y="82.603539"
+       id="text13930-4"
+       transform="scale(1.0158697,0.98437822)"
+       inkscape:export-xdpi="309.60001"
+       inkscape:export-ydpi="309.60001"><tspan
+         sodipodi:role="line"
+         x="291.37317"
+         y="82.603539"
+         style="font-size:4.16720104px;stroke-width:0.26458332"
+         id="tspan1595-9">All control variables were tested against all outcomes</tspan></text>
+  </g>
+</svg>
