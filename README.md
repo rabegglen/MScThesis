@@ -1,4 +1,4 @@
-# MScThesis
+# The Role of Anthropomorphism during Failure Events caused by Robo-Advisors
 This is the public Github repo of my MSc thesis. Within this framework, reproducibility should be as good as possible.
 
 The for the thesis relevant R scripts are the following:
