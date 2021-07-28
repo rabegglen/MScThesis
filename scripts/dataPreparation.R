@@ -10,9 +10,27 @@ if(!require("pacman")){
 }
 
 
+
+
+
+### install plspm from cran archive
+
+# install.packages(c("tester", "turner", "amap", "diagram")) ## dependencies to be installed 
+# url = "https://cran.r-project.org/src/contrib/Archive/plspm/plspm_0.4.9.tar.gz"## the link to the tarball
+# file = "plspm_0.4.9.tar.gz"## filename
+# 
+# download.file(url = url, destfile = file)
+# 
+# install.packages(pkgs=file, type="source", repos=NULL)
+
+
+
+### install plspm from Github
 ### please also make sure to install the R devtools to enable the install_github() function
 ### to install the plspm library, please uncomment
 # devtools :: install_github("gastonstat/plspm")### this is for the plspm package. This package was on CRAN, therefore it was validated. The author however exceeded the period to not mark the package as maintained, that's why his github repo is used as download directory.
+
+
 
 
 
@@ -40,7 +58,7 @@ pacman :: p_load(
 
 
 dat = list.files("./Data/", full.names = TRUE) %>%
-  .[grepl("\\.xlsx", .)] %>% 
+  .[grepl("trust.+anthropo.+\\.xlsx", ., ignore.case = TRUE)] %>% 
   read_excel(.) %>% 
   set_names(
     str_replace_all(names(.), "\\s", "_")
