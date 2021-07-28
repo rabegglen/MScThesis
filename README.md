@@ -11,3 +11,5 @@ The for the thesis relevant R scripts are the following:
 - cronbachsAlpha.R calculates the Cronbach's alpha for the constructs and also takes care of the randomisation check
 
 Within the data folder, the anonymised research data can be found.
+
+The folder Supplementary Materials contains all the materials with a markdown file and respective pdf, which documents the data analysis process.
