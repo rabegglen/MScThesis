@@ -1,7 +1,7 @@
 #### Constructs
 
-source("./scripts/dataPreparation.R")
-
+# source("./scripts/dataPreparation.R")
+load("./data/dataSet.RData")
 
 
 ### this script is responsible for the overall data management regarding the scales and constructs. There is a complete recoding, with respective averaging of the items to tidy the data up.
