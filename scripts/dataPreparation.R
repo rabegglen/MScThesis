@@ -150,7 +150,7 @@ calcDat = temp %>%
   ) %>% 
   select(-StartDate, -EndDate)
 
-save(calcDat, file = "dataSet.RData")
+save(calcDat, file = "./data/dataSet.RData")
 
 temp %>% 
   select(matches("rev")) %>% 
