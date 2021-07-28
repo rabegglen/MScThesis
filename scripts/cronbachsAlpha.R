@@ -16,20 +16,29 @@ names(alphaDat)
 
 # Playfulness
 
+print("Playfulness")
+
 alphaDat %>% 
-  select(matches("playful")) %>% 
+  select(matches("playful[1-2]{1}_")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
-  alpha()
+  alpha() %>% 
+  .$total
+
+blah$total
 
 ### 0.83
 
 
 # Innovativeness
 
+
+print("innovativeness")
+
 alphaDat %>% 
-  select(matches("innov")) %>% 
+  select(matches("innov_")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
-  alpha()
+  alpha() %>% 
+  .$total
 
 
 ### 0.82
@@ -37,8 +46,11 @@ alphaDat %>%
 # Trusting Stance
 
 
+print("Trusting Stance")
+
+
 alphaDat %>% 
-  select(matches("TrustingStance")) %>% 
+  select(matches("TrustingStance_")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
   alpha()
 
@@ -48,9 +60,9 @@ alphaDat %>%
 
 # Robot Self-efficacy
 
-
+print("Robot Self-efficacy")
 alphaDat %>% 
-  select(matches("robotse")) %>% 
+  select(matches("robotse[1-5]{1}")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
   alpha()
 
@@ -58,7 +70,7 @@ alphaDat %>%
 
 
 # Trusting stance towards agent
-
+print("Trusting stance towards agent")
 
 alphaDat %>% 
   select(matches("^TrustingSt_Agent")) %>% 
@@ -71,7 +83,7 @@ alphaDat %>%
 
 
 # Trusting expectations reliability
-
+print("Trusting expectations reliability")
 
 alphaDat %>% 
   select(matches("^trExReliability")) %>% 
@@ -82,7 +94,7 @@ alphaDat %>%
 
 
 # Trusting expectations functionality
-
+print("Trusting expectations functionality")
 
 alphaDat %>% 
   select(matches("^trExFunct")) %>% 
@@ -94,7 +106,7 @@ alphaDat %>%
 
 # Trusting expectations helpfulness
 
-
+print("Trusting expectations helpfulness")
 
 alphaDat %>% 
   select(matches("^trExHelp")) %>% 
@@ -104,12 +116,6 @@ alphaDat %>%
 
 ### 0.81
 
-# general pre-incident expectations
-
-alphaDat %>% 
-  select(matches("^trEx")) %>% 
-  mutate_all(., funs(as.numeric(.))) %>% 
-  alpha(.)
 
 
 
@@ -117,6 +123,7 @@ alphaDat %>%
 
 # Post incident trusting expectations functionality
 
+print("Post incident trusting expectations functionality")
 
 alphaDat %>% 
   select(matches("^PI_trex_func")) %>% 
@@ -130,6 +137,8 @@ alphaDat %>%
 # Post incident trusting expectations helpfulness
 
 
+print("Post incident trusting expectations helpfulness")
+
 alphaDat %>% 
   select(matches("^PI_trex_helpful")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
@@ -139,18 +148,14 @@ alphaDat %>%
 # Post incident trusting expectations functionality
 
 
+print("Post incident trusting expectations functionality")
+
 alphaDat %>% 
   select(matches("^PI_trex_reliab")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
   alpha()
 
 
-# general post incident expectation beliefs
-
-alphaDat %>% 
-  select(matches("^PI_trex")) %>% 
-  mutate_all(., funs(as.numeric(.))) %>% 
-  alpha(., check.keys = TRUE)
 
 
 
@@ -159,6 +164,8 @@ alphaDat %>%
 
 
 # Post incident trusting expectations disconfirmation functionality
+
+print("Post incident trusting expectations disconfirmation functionality")
 
 
 alphaDat %>% 
@@ -171,7 +178,7 @@ alphaDat %>%
 
 
 # Post incident trusting expectations disconfirmation helpfulness
-
+print("Post incident trusting expectations disconfirmation helpfulness")
 
 alphaDat %>% 
   select(matches("^PI_TrDisc_helpful")) %>% 
@@ -180,7 +187,7 @@ alphaDat %>%
 
 
 # Post incident trusting expectations disconfirmation functionality
-
+print("Post incident trusting expectations disconfirmation functionality")
 
 alphaDat %>% 
   select(matches("^PI_TrDisc_reliab")) %>% 
@@ -188,13 +195,7 @@ alphaDat %>%
   alpha()
 
 
-### all expectation disconfirmation beliefs
 
-
-alphaDat %>% 
-  select(matches("^PI_TrDisc")) %>% 
-  mutate_all(., funs(as.numeric(.))) %>% 
-  alpha()
 
 
 ###### trusting performance
@@ -204,6 +205,8 @@ alphaDat %>%
 
 # Post incident trusting performance functionality
 
+
+print("Post incident trusting performance functionality")
 
 alphaDat %>% 
   select(matches("^PI_TrPerf_func")) %>% 
@@ -215,7 +218,7 @@ alphaDat %>%
 
 
 # Post incident trusting performance helpfulness
-
+print("Post incident trusting performance helpfulness")
 
 alphaDat %>% 
   select(matches("^PI_TrPerf_helpful")) %>% 
@@ -223,8 +226,8 @@ alphaDat %>%
   alpha()
 
 
-# Post incident trusting performance functionality
-
+# Post incident trusting performance reliability
+print("Post incident trusting performance reliability")
 
 alphaDat %>% 
   select(matches("^PI_TrPerf_reliab")) %>% 
@@ -232,15 +235,11 @@ alphaDat %>%
   alpha()
 
 
-### overall performance beliefs
-
-alphaDat %>% 
-  select(matches("^PI_TrPerf")) %>% 
-  mutate_all(., funs(as.numeric(.))) %>% 
-  alpha(., check.keys = TRUE)
 
 
 #### tech satisfaction
+
+print("tech satisfaction")
 
 alphaDat %>% 
   select(matches("^PI_Tech_Satisfact")) %>% 
@@ -252,6 +251,8 @@ alphaDat %>%
 
 #### tech trusting intentions
 
+print("tech trusting intentions")
+
 alphaDat %>% 
   select(matches("^PI_TechTr_Intentio")) %>% 
   mutate_all(., funs(as.numeric(.))) %>% 
@@ -260,6 +261,9 @@ alphaDat %>%
 
 
 #### usage continuation intention
+
+
+print("usage continuation intention")
 
 alphaDat %>% 
   select(matches("^Usage_Cont_Intention")) %>% 
@@ -278,6 +282,7 @@ alphaDat %>%
 
 
 ### anthropomorphism in general
+print("Antrhopomorphism")
 
 alphaDat %>% 
   select(matches("anthro")) %>% 
@@ -351,6 +356,8 @@ alphaDat %>%
 
 # empathy in general
 
+
+print("Empathy")
 
 alphaDat %>% 
   select(matches("empathy")) %>% 
