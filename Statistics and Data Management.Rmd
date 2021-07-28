@@ -1,0 +1,2289 @@
+---
+title: "Statistics MSc Thesis BA Information Systems"
+author: "Roman Abegglen"
+date: "25/07/2021"
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+output: pdf_document
+---
+
+
+
+## Disclaimer
+Please note that the execution of this markdown file only will work with the relative directory which it is located in. For the study, only the models with all the indicators, derived from the script "plsPathAllVars.R" and "plsPath4.R". Furthermore, the scripts called "cronbachsAlpha.R" and "manipulationCheck.R" are further relevant for the study and this document. For additional info on the cross-loadings, please refer to "CrossLoadingsTable.csv".
+
+
+## 1. Data Management
+With the data management pipeline, all data exported from Qualtrics are aggregated. As in the raw data the different entries are separated colwise by treatment, this get's changed, so all dimensions are rowwise grouped by the treatments (AE/NE/AN/NN).
+
+
+```{r Data Management, echo=FALSE, include=FALSE}
+### please also make sure to install the R devtools to enable the install_github() function
+### to install the plspm library, please uncomment
+
+
+# devtools :: install_github("gastonstat/plspm")### this is for the plspm package. This package was on CRAN, therefore it was validated. The author however exceeded the period to not mark the package as maintained, that's why his github repo is used as download directory.
+
+### install plspm from cran archive
+
+# url = "https://cran.r-project.org/src/contrib/Archive/plspm/plspm_0.4.9.tar.gz"
+# file = "plspm_0.4.9.tar.gz"
+# 
+# download.file(url = url, destfile = file)
+# ## install dependencies
+# install.packages(c("tester", "turner", "amap", "diagram"))
+# install.packages(pkgs=file, type="source", repos=NULL)
+
+
+pacman :: p_load(
+  tidyverse,
+  readxl,
+  plspm,
+  plsdepot,
+  psych,
+  scico,
+  paletteer,
+  reshape2,
+  stargazer,
+  tinytex,
+  svglite,
+  viridis,
+  httr,
+  kableExtra,
+  knitr,
+  install = TRUE
+  
+)
+
+## Tinytex latex distro for the supplement
+# tinytex::install_tinytex()
+
+
+
+
+dat = list.files("./Data/", full.names = TRUE) %>%
+  .[grepl("\\.xlsx", .)] %>% 
+  read_excel(.) %>% 
+  set_names(
+    str_replace_all(names(.), "\\s", "_")
+  ) %>% 
+  
+  set_names(
+    str_replace_all(names(.), "[_]{2,}", "_")## qualtrics put sometimes underlines in multiple succession in the attribute names
+  ) %>% 
+  
+  set_names(
+    str_remove_all(names(.), "\\(|\\)")
+  ) %>% 
+  filter(
+    !grepl("Start Date", StartDate)
+  ) %>% 
+  mutate_at(
+    vars(StartDate, EndDate, Progress),
+    as.numeric
+  ) %>% 
+  mutate(
+    StartDate = as.POSIXct(StartDate * 60 * 60 * 24,
+                           origin="1899-12-30"
+                           ),
+    EndDate = as.POSIXct(EndDate * 60 * 60 * 24,
+                           origin="1899-12-30"
+    )
+    
+  ) %>% 
+  arrange(StartDate) %>% 
+  filter(
+    StartDate > "2020-11-25 00:00:00" & Progress >= 100
+  )
+  
+
+
+
+### making the data more usable
+
+
+
+# dat %>% 
+#   select(
+#     group, matches("_trExFunct_4")
+#   ) %>% View()
+
+
+### this code block tidies all the variables together grouped by treatments
+
+temp = dat %>% 
+  mutate(
+    
+    TrustingSt_Agent_2 = coalesce(!!! select(., matches("TrustingSt_Agent_2"))),
+    TrustingSt_Agent_3 = coalesce(!!! select(., matches("TrustingSt_Agent_3"))),
+    TrustingSt_Agent_4 = coalesce(!!! select(., matches("TrustingSt_Agent_4"))),
+    trExReliability_2rev = coalesce(!!! select(., matches("trExReliability_2rev"))),
+    trExReliability_3 = coalesce(!!! select(., matches("trExReliability_3"))),
+    trExReliability_4 = coalesce(!!! select(., matches("trExReliability_4"))),
+    proposition = coalesce(!!! select(., matches("proposition"))),
+    trExFunct_2 = coalesce(!!! select(., matches("trExFunct_2"))),
+    trExFunct_3 = coalesce(!!! select(., matches("trExFunct_3"))),
+    trExFunct_4 = coalesce(!!! select(., matches("trExFunct_4"))),
+    trExHelp_2 = coalesce(!!! select(., matches("trExHelp_2"))),
+    trExHelp_5 = coalesce(!!! select(., matches("trExHelp_5"))),
+    trExHelp_3 = coalesce(!!! select(., matches("trExHelp_3"))),
+    consideration = coalesce(!!! select(., matches("consideration"))),
+    reUse = coalesce(!!! select(., matches("reUse"))),
+    email = coalesce(!!! select(., matches("TYGB")))
+    
+    
+  ) %>% 
+  rename(Playful1_2rev = Playful1_2)### minor correction as this item was found reversed - forgot it to flag it into the native survey data
+
+
+
+temp %>% 
+  count(., group)
+
+
+
+
+
+save(temp, file = "./data/dataCompiled.RData")### entire data with email addresses
+
+### extracting the data without email and location data
+
+calcDat = temp %>% 
+  select(
+    !matches("loc|mail|tygb|ipaddress")
+  ) %>% 
+  select(-StartDate, -EndDate)
+
+
+
+```
+
+In a further step, the data will get prepared, so the respective constructs can be used along with the intended Likert Scales, derived from the respective text based answers from the raw data. There is a feature in Qualtrics doing something similar, however this would violate the principle that the raw data is untouched upon extraction.
+
+```{r Constructs, echo=FALSE, include=FALSE}
+
+
+### this script is responsible for the overall data management regarding the scales and constructs. There is a complete recoding, with respective averaging of the items to tidy the data up.
+
+
+## general agreeance
+unique(calcDat$RobotSE1_1) %>% na.omit()
+
+## disconfirmation
+
+### for recoding scales
+scale = c(1, 2, 3, 4, 5, 6, 7)
+-scale + max(scale) + 1 # test to make it reversed
+
+## recoding
+
+calcDat = calcDat %>% 
+  
+  
+  ## recode all text to numbers
+  
+  mutate_all(.,
+         funs(
+           case_when(
+             grepl("extremely disagree|^strongly disagree$|^much worse$|^extremely dissatisfied$|^Extremely miserable$|^extremely frustrated|extremely displeased", ., ignore.case = TRUE) ~ "1",
+             grepl("^disagree$|^worse$|^dissatisfied$|^miserable$|^frustrated$|^Displeased$", ., ignore.case = TRUE) ~ "2",
+             grepl("^somewhat disagree$|^somewhat worse$|^somewhat dissatisfied$|^somewhat miserable$|^somewhat frustrated$|^somewhat displeased$", ., ignore.case = TRUE) ~ "3",
+             
+             grepl("^neutral$", ., ignore.case = TRUE) ~ "4",
+             
+             grepl("^somewhat agree$|^somewhat better$|^somewhat satisfied$|^somewhat delighted$|^somewhat contented$|^somewhat Pleased$", ., ignore.case = TRUE) ~ "5",
+             grepl("^agree$|^better$|^satisfied$|^delighted$|^contented$|^Pleased$", ., ignore.case = TRUE) ~ "6",
+             grepl("^strongly agree$|^much better$|^extremely satisfied$|^extremely delighted$|^Extremely contented$|^Extremely Pleased$", ., ignore.case = TRUE) ~ "7", 
+             
+             TRUE ~ as.character(.) ### converting back afterwards to numeric
+           )
+           
+         )    
+             ) %>% 
+  
+  ### recoding reversed items
+  mutate_at(
+    vars(matches("rev$")),
+    list(~
+      case_when(
+        . == "1" ~ "7",
+        . == "2" ~ "6",
+        . == "3" ~ "5",
+        . == "4" ~ "4",
+        . == "5" ~ "3",
+        . == "6" ~ "2",
+        . == "7" ~ "1",
+        TRUE ~ .
+      )
+    )
+  ) %>% 
+  
+
+  # creating unified scales with the rowmeans of the items
+  
+  mutate_at(### string which matches all the measured variables
+    vars(matches("proposition|playful|innov|TrustingStance|robotse|^TrustingSt_Agent|^trExReliability|^trExFunct|^trExHelp|^PI_trex_func|^PI_trex_helpful|^PI_trex_reliab|^PI_TrDisc_func|^PI_TrDisc_helpful|^PI_TrDisc_reliab|^PI_TrPerf_func|^PI_TrPerf_reliab|^PI_TrPerf_helpful|^PI_TechTr_Intentio|^Usage_Cont_Intention|^PI_Tech_Satisfact")),
+    list(
+      ~as.numeric(.)
+    )
+  ) %>% 
+  
+  
+  mutate(
+    technologyPlayfulness = rowMeans(select(., matches("playful"))),
+    techhnologyInnovativeness = rowMeans(select(., matches("innov"))),
+    generalTrustingStance =  rowMeans(select(., matches("TrustingStance"))),
+    robotSelfEfficacy =  rowMeans(select(., matches("robotse"))),
+    
+    trustingStanceAgent = rowMeans(select(., matches("^TrustingSt_Agent"))),
+    
+    
+    
+    
+    
+    # Trusting expectations
+    
+    # all vars
+    
+    trExpectAll = rowMeans(select(., matches("^trEx"))),
+    
+    # single vars
+    
+    trExpectReliability = rowMeans(select(., matches("^trExReliability"))),
+    trExpectFunctionality = rowMeans(select(., matches("^trExFunct"))),
+    trExpectHelpful = rowMeans(select(., matches("^trExHelp"))),
+    
+   
+    
+    # Post incident expectation
+    
+    
+    ### first need to reverse PI_TrEx_Reliability
+    
+    PI_TrEx_Reliability_1 = -PI_TrEx_Reliability_1 + max(PI_TrEx_Reliability_1) + 1,
+    PI_TrEx_Reliability_2 = -PI_TrEx_Reliability_2 + max(PI_TrEx_Reliability_2) + 1,
+    PI_TrEx_Reliability_3 = -PI_TrEx_Reliability_3 + max(PI_TrEx_Reliability_3) + 1,
+    
+    # all vars
+    
+    PI_trExpectAll = rowMeans(select(., matches("^PI_trex"))),
+    
+    # revert it back
+    
+    PI_TrEx_Reliability_1 = -PI_TrEx_Reliability_1 + max(PI_TrEx_Reliability_1) + 1,
+    PI_TrEx_Reliability_2 = -PI_TrEx_Reliability_2 + max(PI_TrEx_Reliability_2) + 1,
+    PI_TrEx_Reliability_3 = -PI_TrEx_Reliability_3 + max(PI_TrEx_Reliability_3) + 1,
+    
+    # single vars
+    
+    
+    PI_trExpectfunct = rowMeans(select(., matches("^PI_trex_func"))),
+    PI_trExpectHelpful = rowMeans(select(., matches("^PI_trex_helpful"))),
+    PI_trExpectReliab = rowMeans(select(., matches("^PI_trex_reliab"))),
+    
+    
+    
+    # expectation disconfirmation
+    
+    # all vars
+    
+    PI_trDiscAll = rowMeans(select(., matches("^PI_TrDisc"))),
+    
+    # single vars
+    
+    PI_trDiscfunction = rowMeans(select(., matches("^PI_TrDisc_func"))),
+    PI_trDiscHelpful = rowMeans(select(., matches("^PI_TrDisc_helpful"))),
+    PI_trDiscReliab = rowMeans(select(., matches("^PI_TrDisc_reliab"))),
+    
+    
+    
+    # Trusting performance
+    
+    # all vars
+    
+    ### first need to reverse PI_TrPerf_reliab
+    
+    PI_TrPerf_Reliab_1 = -PI_TrPerf_Reliab_1 + max(PI_TrPerf_Reliab_1) + 1,
+    PI_TrPerf_Reliab_2 = -PI_TrPerf_Reliab_2 + max(PI_TrPerf_Reliab_2) + 1,
+    PI_TrPerf_Reliab_3rev = -PI_TrPerf_Reliab_3rev + max(PI_TrPerf_Reliab_3rev) + 1,
+    
+    PI_trPerfAll = rowMeans(select(., matches("^PI_TrPerf"))),
+    
+    ### reverse it back
+    
+    PI_TrPerf_Reliab_1 = -PI_TrPerf_Reliab_1 + max(PI_TrPerf_Reliab_1) + 1,
+    PI_TrPerf_Reliab_2 = -PI_TrPerf_Reliab_2 + max(PI_TrPerf_Reliab_2) + 1,
+    PI_TrPerf_Reliab_3rev = -PI_TrPerf_Reliab_3rev + max(PI_TrPerf_Reliab_3rev) + 1,
+    
+    
+    PI_trPerformFunc = rowMeans(select(., matches("^PI_TrPerf_func"))),
+    PI_trPerformRelia = select(., matches("^PI_TrPerf_reliab")) %>% rowMeans(),
+    PI_trPerformHelp = rowMeans(select(., matches("^PI_TrPerf_helpful"))),
+    
+    
+    
+    
+    
+    # all vars
+    
+    
+    # Technology satisfaction
+    
+    PI_TechSatisfactionAll = rowMeans(select(., matches("^PI_Tech_Satisfact"))),
+    
+    
+    PI_trPerformAll = rowMeans(select(., matches("^PI_TrPerf"))),
+    
+    # Tech trusting intentions
+    TechTrIntentionsAll = rowMeans(select(., matches("^PI_TechTr_Intentio"))),
+    
+    # usage continuance intentions
+    UseContIntentionsAll = rowMeans(select(., matches("^Usage_Cont_Intention"))),
+    
+  ) %>% 
+  select(-matches("^AN|^NN|^NE|^AE|^Q[1-9]{1,}"))# %>% 
+  # select(Age_1, Edu, UserLanguage:Gender, group, matches("^MC_"), consideration:UseContIntentionsAll, proposition) ### tossing out the cluttered variables which were unified anyway into their grouped constructs
+
+
+names(calcDat)
+
+
+
+
+
+
+
+```
+
+## 2. Calculating the first Model
+
+
+### 2.1 Unidimensionality
+
+First, all variables will be included within the first model. The model will get adjusted based on the indicator loadings below 0.7. Also unidimensionality will get checked along the way.
+
+
+```{r first model, echo=FALSE, include=FALSE}
+plsDat = calcDat %>% 
+  mutate(
+    
+    anthropo = case_when(
+      
+      grepl("^A", group) ~ 1,
+      grepl("^N", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    empathy = case_when(
+      
+      grepl("E$", group) ~ 1,
+      grepl("N$", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    
+    eduNum = case_when(
+      
+      grepl("Mandatory School", Edu, ignore.case = TRUE) ~ 1,
+      grepl("Vocational Education and Training/Professional Certificate", Edu, ignore.case = TRUE) ~ 2,
+      grepl("Grammar school or equivalent", Edu, ignore.case = TRUE) ~ 3,
+      grepl("Bachelor's degree or equivalent", Edu, ignore.case = TRUE) ~ 4,
+      grepl("Master's degree", Edu, ignore.case = TRUE) ~ 5,
+      grepl("PhD, MD or higher", Edu, ignore.case = TRUE) ~ 6
+      
+    ),
+    
+    
+    # Creating meaningful numeric measures for control vars like age, gender and education
+    
+    genderNum = case_when(
+      
+      grepl("Female", Gender) ~ 2,
+      grepl("Male", Gender) ~ 1,
+      grepl("No Answer", Gender) ~ 0
+    ) %>% as.factor()
+    
+    
+    
+  )
+
+
+plsDat$Gender %>% unique()
+
+names(plsDat)
+
+### model all: adding interaction terms for anthro and empathy
+
+
+## stripping the data from the vars with insufficient loadings
+
+
+
+
+modelDat = plsDat %>%
+  select(
+    # control variables
+    matches("innov|playful|trustingstance|robotse|edunum|gendernum"),
+    # service failure
+    matches("service"),
+    # the treatment
+    matches("^anthropo$|^empathy$"),
+    # Contructs
+    matches("anthro.*_[1-9]{1}"), matches("empathy.*_[1-9]{1}"), matches("^trex.*_[1-9]{1}"), matches("pi_trex.*_[1-9]{1}"), matches("trdisc.*_[1-9]{1}"), matches("perf.*_[1-9]{1}"), matches("satis.*[1-9]{1}"), matches("techtr_intention.*_[1-9]{1}"), matches("cont_int.*_[1-9]{1}"),
+    matches("^reuse$")
+  ) %>% 
+  mutate_all(., as.numeric) %>% 
+  
+  mutate(
+    
+    ## post incident trusting expectation measures for reliability are anti-correlated due to how the questions were asked, that's why they are reversed here
+    PI_TrEx_Reliability_1 = -PI_TrEx_Reliability_1 + max(PI_TrEx_Reliability_1) + 1,
+    PI_TrEx_Reliability_2 = -PI_TrEx_Reliability_2 + max(PI_TrEx_Reliability_2) + 1,
+    PI_TrEx_Reliability_3 = -PI_TrEx_Reliability_3 + max(PI_TrEx_Reliability_3) + 1,
+    
+    ## post incident trusting performance measures for reliability are anti-correlated due to how the questions were asked, that's why they are reversed here
+    PI_TrPerf_Reliab_1 = -PI_TrPerf_Reliab_1 + max(PI_TrPerf_Reliab_1) + 1,
+    PI_TrPerf_Reliab_2 = -PI_TrPerf_Reliab_2 + max(PI_TrPerf_Reliab_2) + 1,
+    PI_TrPerf_Reliab_3rev = -PI_TrPerf_Reliab_3rev + max(PI_TrPerf_Reliab_3rev) + 1,
+    
+  )
+
+
+
+
+
+ModelDatAll = modelDat %>% 
+  # select(
+  #   -matches("anthro_3rev|anthro_1|^trexreliability|^trexhelp_5|pi_trex_reliability|trdisc_reliabilit|pi_trperf_reliab|servicefailure_1|robotSE1|trustingstance_2|robotse3|robotse2_2|robotse2_3|playful1_2rev|playful2_1rev|playful2_3rev|innov_3rev")
+  # ) %>% 
+  mutate(
+    
+    ## interaction with antrhopomorphism and service failure
+    anthroInter1 = MC_serviceFailure_2 * MC_Anthro_2,
+    anthroInter2 = MC_serviceFailure_3rev * MC_Anthro_2,
+    
+    ## interaction with empathy and service failure
+    
+    empathInter4 = MC_serviceFailure_3rev * MC_Empathy_1,
+    empathInter5 = MC_serviceFailure_3rev * MC_Empathy_2,
+    empathInter6 = MC_serviceFailure_3rev * MC_Empathy_3rev,
+    
+    
+    ## interaction with treatment anthropomorphism and service failure
+    TreatAnthroInter1 = MC_serviceFailure_2 * anthropo,
+    TreatAnthroInter2 = MC_serviceFailure_3rev * anthropo,
+    
+    
+    ## interaction with treatment empathy and service failure
+    TreatEmpathInter1 = MC_serviceFailure_2 * empathy,
+    TreatEmpathInter2 = MC_serviceFailure_3rev * empathy,
+    
+    
+    ## interaction with treatment empathy and anthro
+    
+    treatAnthroEmpath = empathy * anthropo,
+    
+    
+    ## interaction with perceived empathy and anthro
+    
+    anthroEmpath1 = MC_Anthro_2 * MC_Empathy_1,
+    anthroEmpath2 = MC_Anthro_2 * MC_Empathy_2,
+    anthroEmpath3 = MC_Anthro_2 * MC_Empathy_3rev,
+    
+    
+  )
+
+
+names(ModelDatAll)
+
+
+
+ModelDatAll %>% names()
+
+
+
+### create the path matrix with the relevant inner model constructs
+
+
+anthroTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroEmpath      =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatEmpathInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+anthro                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathy                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+AnthroEmpath           =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interEmpath            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interAnthro            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+InitialTechTrustExpect =      c(1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustExpect =      c(0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+playfulness            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+innovativeness         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+robotSE                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+trustingstance         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+genderNum              =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+eduNum                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0)
+reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+
+
+techPath = rbind(
+  anthroTreat           ,
+  empathTreat           ,
+  treatAnthroEmpath     ,
+  treatAnthroInter      ,
+  treatEmpathInter      ,
+  anthro                ,
+  empathy               ,
+  AnthroEmpath          ,
+  interEmpath           ,
+  interAnthro           ,
+  servFailure           ,
+  InitialTechTrustExpect,
+  PostIncTechTrustExpect,
+  PostIncTechTrustPerfor,
+  PostIncTechTrustDiconf,
+  PostIncTechTrustSatisf,
+  PostIncTechTrustIntent,
+  playfulness           ,
+  innovativeness        ,
+  robotSE               ,
+  trustingstance        ,
+  genderNum             ,
+  eduNum                ,
+  IntentOfUsageContinuat,
+  reUse                 
+)
+
+colnames(techPath) = rownames(techPath)
+
+
+innerplot(techPath, box.size = 0.05)
+
+
+
+#### creating the data indices to feed the data into the model the correct way. I relied on pattern matching instead of judgement by eye, that's why there is grep()
+
+# service failure index
+
+
+failIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("service", ., ignore.case = TRUE)
+
+
+
+# interactions
+
+interAnthroIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^anthroInter", ., ignore.case = TRUE)
+
+
+
+interEmpathIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^empathInter", ., ignore.case = TRUE)
+
+
+
+treatAnthroInterIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^treatanthroInter", ., ignore.case = TRUE)
+
+
+
+treatEmpathInterIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^treatempathInter", ., ignore.case = TRUE)
+
+
+
+
+AnthroEmpathIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^AnthroEmpath", ., ignore.case = TRUE) 
+
+
+
+
+treatAnthroEmpathIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^treatAnthroEmpath$", ., ignore.case = TRUE) 
+
+
+
+# For the treatment
+
+anthroTreatIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^anthropo$", ., ignore.case = TRUE)
+
+
+# For the treatment
+
+empathTreatIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^empathy", ., ignore.case = TRUE)
+
+
+# perceived anthropomorphism
+
+
+anthroIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("anthro.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# perceived empathy
+
+emphaIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("empathy.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# trusting expectations
+
+trexIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^trex.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# post-incident trusting expectations
+
+PItrexIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("^pi_trex.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Trusting expectations disconfirmation
+
+trdiscIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("trdisc.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Trusting performance
+
+trPerfIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("perf.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Satisfaction
+
+satisIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("satis.*[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Technology trusting intention
+
+trIntIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("techtr_intention.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Trusting intentions
+
+techtrInt = ModelDatAll %>% 
+  names() %>% 
+  grep("techtr_intention.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# usage continuation intention
+
+useContIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("cont_int.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# actual re-use of the system
+
+
+reUseIndex = ModelDatAll %>% 
+  names() %>% 
+  grep("reUse", ., ignore.case = TRUE)
+
+
+## control vars
+
+
+playfulnessIndex           = ModelDatAll %>% 
+  names() %>% 
+  grep("playful[1-9]{1}_", ., ignore.case = TRUE)
+
+
+innovativenessIndex        = ModelDatAll %>% 
+  names() %>% 
+  grep("innov_[1-9]{1}", ., ignore.case = TRUE)
+
+
+robotSEIndex               = ModelDatAll %>% 
+  names() %>% 
+  grep("robotSE[1-9]{1}_", ., ignore.case = TRUE)
+
+
+trustingstanceIndex        = ModelDatAll %>% 
+  names() %>% 
+  grep("trustingstance_", ., ignore.case = TRUE)
+
+
+genderNumIndex             = ModelDatAll %>% 
+  names() %>% 
+  grep("genderNum", ., ignore.case = TRUE)
+
+
+eduNumIndex                = ModelDatAll %>% 
+  names() %>% 
+  grep("eduNum", ., ignore.case = TRUE)
+
+
+
+
+
+
+
+
+#### assembling the model blocks
+
+
+
+modelBlocks = list(
+  anthroTreatIndex,
+  empathTreatIndex,
+  treatAnthroEmpathIndex,
+  treatAnthroInterIndex,
+  treatEmpathInterIndex,
+  anthroIndex,
+  emphaIndex,
+  AnthroEmpathIndex,
+  interEmpathIndex,
+  interAnthroIndex,
+  
+  failIndex,
+  trexIndex,
+  PItrexIndex,
+  trPerfIndex,
+  trdiscIndex,
+  satisIndex,
+  techtrInt,
+  
+  playfulnessIndex,   
+  innovativenessIndex,
+  robotSEIndex,       
+  trustingstanceIndex,
+  genderNumIndex,     
+  eduNumIndex,
+  
+  useContIndex,
+  reUseIndex
+)
+
+
+blockAmount = length(modelBlocks)
+
+# They are reflective as per definition in Lankton 2014
+
+modelModes = rep("A", blockAmount) 
+
+
+ModelDatAll %>% 
+  filter_all(
+    any_vars(is.na(.))
+  )
+
+
+# the whole model
+
+ModelDatAll = ModelDatAll %>%
+  filter(!is.na(genderNum))
+
+
+anthroModelAll = plspm(Data = ModelDatAll, path_matrix = techPath, blocks = modelBlocks, modes = modelModes)
+
+```
+
+
+After model calculation, the unidimensionality measures of the first model can be seen.
+
+```{r unidimensionality}
+
+anthroModelAll$unidim
+
+```
+
+Within this table, Cronbach's Alpha, Dillon-Goldstein's Rho, 1st and 2nd Eigenvalue are visible.
+There are also interaction terms within the model to check for moderation effects.\hfill\break
+treatAnthroInter = Moderation of treatment imposed anthropomorphism on the negative perceived effects of the failing robo-advisor\hfill\break
+treatEmpathInter = Moderation of treatment imposed empathy on the negative perceived effects of the failing robo-advisor\hfill\break
+interAnthro = Moderation of the perceived anthropomorphism on the negative perceived effects of the failing robo-advisor\hfill\break
+interEmpath = Moderation of the perceived empathy on the negative perceived effects of the failing robo-advisor\hfill\break
+    
+Overall it is visible that only the perceived service failure might be a little unreliable. This construct was reduced to one item, which was asking the participant whether she/he thinks that the robo-advisor failed doing its task. This Question was believed to be the most concise.
+
+### 2.2 Loadings/Outer model
+
+Inspecting the outer model is important to decide to cull indicators of latent variables which capture not enough variance (< 0.7).
+This can be illustrated by a table, however as this model is quite complex, a table would be confusing. Better are plots showing which indicators are below 0.7, demonstrated on the next page.
+The indicators below 0.7 were omitted for the final model used for this study. Compare Figure 1.
+
+
+```{r loadings plot, ffig.asp=0.8, fig.width=12, fig.height=14, echo=FALSE, fig.cap=paste("Barchart of indicator loadings grouped by latent variable. The horizontal line indicates the 0.7 threshold.")}
+
+ggplot(data = anthroModelAll$outer_model,
+       aes(x = name, y = loading, fill = block)) +
+  
+  geom_bar(
+    stat = "identity", position = "dodge"
+  ) +
+  # threshold line (to peek acceptable loadings above 0.7)
+  geom_hline(yintercept = 0.7, color = "gray50"
+  ) +
+  # add title
+  ggtitle("Barchart of Loadings") +
+  # rotate x-axis names
+  theme(axis.text.x = element_text(angle = 90),
+        legend.title = element_text(size = rel(0.85), face = "bold"),
+        legend.text = element_text(size = rel(0.70), face = "bold"),
+        legend.key = element_rect(fill = "transparent", colour = NA),
+        legend.key.size = unit(1.5, "lines"),
+        legend.background = element_rect(fill = "transparent", colour = NA)) +
+  theme(legend.position="bottom") +
+  guides(fill = guide_legend(nrow = 5, byrow = TRUE),
+         shape = guide_legend(override.aes = list(size = 3))) +
+  labs(x = "Indicator Name",
+       fill = "Latent Variable",
+       y = "Loading")
+
+
+```
+
+
+### 2.3 Cross-loadings
+
+The same counts for cross-loadings and this rather complex model. A table is rather ill-fit as it would not fit on a page. A heat map might give more insights about the variables. It is visible that in case of a lot of variables, the loadings might be low overall or even higher, compared to other latent variable blocks which the indicator is not supposed to predict. Traitor indicators will be an additional subject of the item culling process. Compare Figure 2.
+
+```{r heatmapdata, echo=FALSE, include=FALSE}
+
+
+
+
+### get some heat maps
+
+
+## create matrix
+crossloadings = anthroModelAll$crossloadings
+
+loadingNames = crossloadings$name
+
+
+hmCrossl = crossloadings %>% 
+  select(-block) %>% 
+  melt(., value.name = "Cross Loading") %>% 
+  rename(
+    Block = variable, Item = name 
+  ) %>% 
+  filter(
+    !grepl("innov|trustingstance|gender|edunum|playful|robotse", ignore.case = TRUE, Block) & !grepl("innov|trustingstance|gender|edunum|playful|robotse", ignore.case = TRUE, Item)
+  ) 
+
+
+
+## create raster plot
+
+# make nicer names for the items for the graph
+
+
+rasterDat = hmCrossl %>% 
+  
+
+  mutate(., 
+         
+         Item = str_replace_all(Item, "Usage_Cont_Intention_", "Usage Continuance Intention "),
+         Item = str_replace_all(Item, "PI_", "PI-"),
+         Item = str_replace_all(Item, "anthroEmpath", "Anthro (P) x Empathy (P)"),
+         Item = str_replace_all(Item, "TrDisc", "Trusting Disconfirmation"),
+         Item = str_replace_all(Item, "TrEx|trEx", "Trusting Expectations "),
+         Item = str_replace_all(Item, "TrPerf", "Trusting Performance"),
+         Item = str_replace_all(Item, "empathInter", "Empathy (P) x Failure (P)"),
+         Item = str_replace_all(Item, "anthroInter", "Anthro (P) x Failure (P)"),
+         Item = str_replace_all(Item, "treatAnthroEmpath", "Anthro (T) x Empathy "),
+         Item = str_replace_all(Item, "TreatAnthroInter", "Anthro (T) x Failure (P) "),
+         Item = str_replace_all(Item, "TreatEmpathInter", "Empathy (T) x Failure (P) "),
+         Item = str_replace_all(Item, "reUse", "re-use"),
+         Item = str_replace_all(Item, "empathy", "Empathy (T)"),
+         Item = str_replace_all(Item, "anthropo", "Anthro (T)"),
+         Item = str_replace_all(Item, "MC_serviceFailure_", "Failure (P)"),
+         
+         Item = str_replace_all(Item, "_", " ")
+         
+         
+            ) %>% 
+  
+  mutate(
+    Block = str_replace_all(Block, "anthroTreat", "Anthro (T)"),
+    Block = str_replace_all(Block, "empathTreat", "Empathy (T)"),
+    Block = str_replace_all(Block, "treatAnthroEmpath", "Anthro (T) x Empathy (T)"),
+    Block = str_replace_all(Block, "treatAnthroInter", "Anthro (T) x Failure (P)"),
+    Block = str_replace_all(Block, "treatEmpathInter", "Empathy (T) x Failure (P)"),
+    Block = str_replace_all(Block, "anthro", "Anthro (P)"),
+    Block = str_replace_all(Block, "empathy", "Empathy (P)"),
+    Block = str_replace_all(Block, "AnthroEmpath", "Empathy (P) x Anthro (P)"),
+    Block = str_replace_all(Block, "interEmpath", "Empathy (P) x Failure (P)"),
+    Block = str_replace_all(Block, "interAnthro", "Anthro (P) x Failure (P)"),
+    Block = str_replace_all(Block, "servFailure", "Failure (P)"),
+    Block = str_replace_all(Block, "PostInc", "PI-"),
+    Block = str_replace_all(Block, "interEmpath", "Empathy (P) x Failure (P)"),
+    Block = str_replace_all(Block, "reUse", "re-use"),
+    Block = str_replace_all(Block, "reUse", "re-use"),
+  )
+
+
+unique(rasterDat$Item)
+unique(rasterDat$Block)
+
+
+
+```
+
+
+
+```{r crossloadings plot, ffig.asp=0.8, fig.width=12, fig.height=14, echo=FALSE, fig.cap=paste("Heatmap of the crossloadings within the respective latent variables. Brighter values indicate higher loadings")}
+
+
+
+ggplot(rasterDat, aes(x = factor(Block, levels = unique(Block)), y = factor(Item, levels = unique(Item)), fill = `Cross Loading`)) +
+  geom_raster() +
+  # scale_y_discrete(guide = guide_axis(angle = -45)) +
+  scale_x_discrete(guide = guide_axis(angle = 45)) +
+  labs(title = "Cross Loadings for Item Blocks") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  paletteer::scale_fill_paletteer_c("viridis::plasma") +
+
+  labs(
+    x = "Block",
+    y = "Items"
+  )
+
+```
+
+\newpage
+
+### 2.4 The inner Model
+
+Next is the inspection of the inner model, where it is visible whether and which indicators will predict a latent variable within the PLS path model. Estimates with the respective t-values and related p-values are indicated within each block. Each block represents one latent variable and the latent variables are ordered in a way that they represent the path model.
+
+```{r innerModel}
+
+anthroModelAll$inner_model
+
+```
+
+\newpage
+
+### 2.5 Direct relationships
+
+It is also possible to list all direct relationships within the model itself
+
+
+```{r relationships, echo=FALSE}
+
+
+
+effects = anthroModelAll$effects %>% 
+  filter(direct != 0 | indirect != 0) %>% 
+  filter(direct != 0)
+
+
+
+pathEffects = as.matrix(effects[2:3])
+
+rownames(pathEffects) = effects$relationships
+
+pathEffects
+
+```
+
+
+## 2.6 Pseudo-goodness of fit of the model
+
+The plspm package has a goodness of fit measure, which is the geometric mean of the respective average R-squares and average communalities. That way a measure for a goodness of fit gets calculated.
+
+```{r GoF}
+
+anthroModelAll$gof
+
+```
+
+
+## 3. Calculating the final model
+
+### 3.1 Indicator loadings after the item culling process
+
+After the loadings were showing that a lot of variables were not sufficiently capturing variance, they got omitted to reduce model complexity and with that also goodness of fit.
+With the variables with insufficient laodings removed, we see the following picture in figure 3. Note that of course a lot of variables became univariate, which means they have a loading of 1.
+
+
+```{r second model calculation, echo=FALSE, include=FALSE}
+
+
+plsDat = calcDat %>% 
+  mutate(
+    
+    anthropo = case_when(
+      
+      grepl("^A", group) ~ 1,
+      grepl("^N", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    empathy = case_when(
+      
+      grepl("E$", group) ~ 1,
+      grepl("N$", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    
+    eduNum = case_when(
+      
+      grepl("Mandatory School", Edu, ignore.case = TRUE) ~ 1,
+      grepl("Vocational Education and Training/Professional Certificate", Edu, ignore.case = TRUE) ~ 2,
+      grepl("Grammar school or equivalent", Edu, ignore.case = TRUE) ~ 3,
+      grepl("Bachelor's degree or equivalent", Edu, ignore.case = TRUE) ~ 4,
+      grepl("Master's degree", Edu, ignore.case = TRUE) ~ 5,
+      grepl("PhD, MD or higher", Edu, ignore.case = TRUE) ~ 6
+      
+    ),
+    
+    
+    # Creating meaningful numeric measures for control vars like age, gender and education
+    
+    genderNum = case_when(
+      
+      grepl("Female", Gender) ~ 2,
+      grepl("Male", Gender) ~ 1,
+      grepl("No Answer", Gender) ~ 0
+    ) %>% as.factor(),
+    
+    
+    
+    ageNum = case_when(
+      
+      grepl("Younger than 20", Age_1, ignore.case = TRUE) ~ 1,
+      grepl("20-29", Age_1, ignore.case = TRUE) ~ 2,
+      grepl("30-39", Age_1, ignore.case = TRUE) ~ 3,
+      grepl("40-49", Age_1, ignore.case = TRUE) ~ 4,
+      grepl("50-59", Age_1, ignore.case = TRUE) ~ 5,
+      grepl("60-69", Age_1, ignore.case = TRUE) ~ 6,
+      grepl("70-79", Age_1, ignore.case = TRUE) ~ 7,
+      grepl("Older than 80", Age_1, ignore.case = TRUE) ~ 8,
+      
+    ),
+    
+    
+  )
+
+
+plsDat$Gender %>% unique()
+
+names(plsDat)
+
+### model 3: adding interaction terms for anthro and empathy
+
+
+## stripping the data from the vars with insufficient loadings
+
+
+
+
+modelDat = plsDat %>%
+  select(
+    # control variables
+    matches("innov|playful|trustingstance|robotse|edunum|gendernum|trustingst_agent|ageNum"),
+    # service failure
+    matches("service"),
+    # the treatment
+    matches("^anthropo$|^empathy$"),
+    # Contructs
+    matches("anthro.*_[1-9]{1}"), matches("empathy.*_[1-9]{1}"), matches("^trex.*_[1-9]{1}"), matches("pi_trex.*_[1-9]{1}"), matches("trdisc.*_[1-9]{1}"), matches("perf.*_[1-9]{1}"), matches("satis.*[1-9]{1}"), matches("techtr_intention.*_[1-9]{1}"), matches("cont_int.*_[1-9]{1}"),
+    matches("^reuse$")
+  ) %>% 
+  mutate_all(., as.numeric) %>% 
+  
+  mutate(
+    
+    ## post incident trusting expectation measures for reliability are anti-correlated due to how the questions were asked, that's why they are reversed here
+    PI_TrEx_Reliability_1 = -PI_TrEx_Reliability_1 + max(PI_TrEx_Reliability_1) + 1,
+    PI_TrEx_Reliability_2 = -PI_TrEx_Reliability_2 + max(PI_TrEx_Reliability_2) + 1,
+    PI_TrEx_Reliability_3 = -PI_TrEx_Reliability_3 + max(PI_TrEx_Reliability_3) + 1,
+    
+    ## post incident trusting performance measures for reliability are anti-correlated due to how the questions were asked, that's why they are reversed here
+    PI_TrPerf_Reliab_1 = -PI_TrPerf_Reliab_1 + max(PI_TrPerf_Reliab_1) + 1,
+    PI_TrPerf_Reliab_2 = -PI_TrPerf_Reliab_2 + max(PI_TrPerf_Reliab_2) + 1,
+    PI_TrPerf_Reliab_3rev = -PI_TrPerf_Reliab_3rev + max(PI_TrPerf_Reliab_3rev) + 1,
+    
+  )
+
+
+
+
+
+modelDat4 = modelDat %>% 
+  select(
+    -matches("anthro_3rev|anthro_1|^trexreliability|^trexhelp_5|pi_trex_reliability|trdisc_reliabilit|pi_trperf_reliab|servicefailure_1|servicefailure_3|robotSE1|trustingstance_2|robotse3|robotse2_2|robotse2_3|playful1_2rev|playful2_1rev|playful2_3rev|innov_3rev")
+  ) %>% 
+  mutate(
+    
+    ## interaction with antrhopomorphism and service failure
+    anthroInter1 = MC_serviceFailure_2 * MC_Anthro_2,
+    # anthroInter2 = MC_serviceFailure_3rev * MC_Anthro_2,
+    
+    ## interaction with empathy and service failure
+    
+    
+    
+    
+    
+    empathInter4 = MC_serviceFailure_2 * MC_Empathy_1,
+    empathInter5 = MC_serviceFailure_2 * MC_Empathy_2,
+    empathInter6 = MC_serviceFailure_2 * MC_Empathy_3rev,
+    
+    
+    ## interaction with treatment anthropomorphism and service failure
+    TreatAnthroInter1 = MC_serviceFailure_2 * anthropo,
+    # TreatAnthroInter2 = MC_serviceFailure_3rev * anthropo,
+    
+    
+    ## interaction with treatment empathy and service failure
+    TreatEmpathInter1 = MC_serviceFailure_2 * empathy,
+    # TreatEmpathInter2 = MC_serviceFailure_3rev * empathy,
+    
+    
+    ## interaction with treatment empathy and anthro
+    
+    treatAnthroEmpath = empathy * anthropo,
+    
+    
+    ## interaction with perceived empathy and anthro
+    
+    anthroEmpath1 = MC_Anthro_2 * MC_Empathy_1,
+    anthroEmpath2 = MC_Anthro_2 * MC_Empathy_2,
+    anthroEmpath3 = MC_Anthro_2 * MC_Empathy_3rev,
+
+
+  )
+
+
+names(modelDat4)
+
+
+
+modelDat4 %>% names()
+
+
+
+### create the path matrix with the relevant inner model constructs
+
+
+anthroTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathTreat            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroEmpath      =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatAnthroInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+treatEmpathInter       =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+anthro                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+empathy                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+AnthroEmpath           =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interEmpath            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+interAnthro            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+servFailure            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+InitialTechTrustExpect =      c(1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustExpect =      c(0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustPerfor =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustDiconf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustSatisf =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+PostIncTechTrustIntent =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+playfulness            =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+innovativeness         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+robotSE                =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+trustingstance         =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+genderNum              =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+eduNum                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+ageNum                 =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+IntentOfUsageContinuat =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0)
+reUse                  =      c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+
+techPath = rbind(
+  anthroTreat           ,
+  empathTreat           ,
+  treatAnthroEmpath     ,
+  treatAnthroInter      ,
+  treatEmpathInter      ,
+  anthro                ,
+  empathy               ,
+  AnthroEmpath          ,
+  interEmpath           ,
+  interAnthro           ,
+  servFailure           ,
+  InitialTechTrustExpect,
+  PostIncTechTrustExpect,
+  PostIncTechTrustPerfor,
+  PostIncTechTrustDiconf,
+  PostIncTechTrustSatisf,
+  PostIncTechTrustIntent,
+  playfulness           ,
+  innovativeness        ,
+  robotSE               ,
+  ageNum   ,
+  trustingstance        ,
+  genderNum             ,
+  eduNum                ,
+  IntentOfUsageContinuat,
+  reUse                 
+)
+
+colnames(techPath) = rownames(techPath)
+
+
+innerplot(techPath, box.size = 0.05)
+
+
+
+#### creating the data indices to feed the data into the model the correct way. I relied on pattern matching instead of judgement by eye, that's why there is grep()
+
+# service failure index
+
+
+failIndex = modelDat4 %>% 
+  names() %>% 
+  grep("service", ., ignore.case = TRUE)
+
+
+
+# interactions
+
+interAnthroIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^anthroInter", ., ignore.case = TRUE)
+
+
+
+interEmpathIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^empathInter", ., ignore.case = TRUE)
+
+
+
+treatAnthroInterIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^treatanthroInter", ., ignore.case = TRUE)
+
+
+
+treatEmpathInterIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^treatempathInter", ., ignore.case = TRUE)
+
+
+
+
+AnthroEmpathIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^AnthroEmpath", ., ignore.case = TRUE) 
+
+
+
+
+treatAnthroEmpathIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^treatAnthroEmpath$", ., ignore.case = TRUE) 
+
+
+
+# For the treatment
+
+anthroTreatIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^anthropo$", ., ignore.case = TRUE)
+
+
+# For the treatment
+
+empathTreatIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^empathy", ., ignore.case = TRUE)
+
+
+# perceived anthropomorphism
+
+
+anthroIndex = modelDat4 %>% 
+  names() %>% 
+  grep("anthro.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# perceived empathy
+
+emphaIndex = modelDat4 %>% 
+  names() %>% 
+  grep("empathy.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# trusting expectations
+
+trexIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^trex.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# post-incident trusting expectations
+
+PItrexIndex = modelDat4 %>% 
+  names() %>% 
+  grep("^pi_trex.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Trusting expectations disconfirmation
+
+trdiscIndex = modelDat4 %>% 
+  names() %>% 
+  grep("trdisc.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Trusting performance
+
+trPerfIndex = modelDat4 %>% 
+  names() %>% 
+  grep("perf.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Satisfaction
+
+satisIndex = modelDat4 %>% 
+  names() %>% 
+  grep("satis.*[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Technology trusting intention
+
+trIntIndex = modelDat4 %>% 
+  names() %>% 
+  grep("techtr_intention.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# Trusting intentions
+
+techtrInt = modelDat4 %>% 
+  names() %>% 
+  grep("techtr_intention.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# usage continuation intention
+
+useContIndex = modelDat4 %>% 
+  names() %>% 
+  grep("cont_int.*_[1-9]{1}", ., ignore.case = TRUE)
+
+
+# actual re-use of the system
+
+
+reUseIndex = modelDat4 %>% 
+  names() %>% 
+  grep("reUse", ., ignore.case = TRUE)
+
+
+## control vars
+
+
+playfulnessIndex           = modelDat4 %>% 
+  names() %>% 
+  grep("playful[1-9]{1}_", ., ignore.case = TRUE)
+  
+  
+innovativenessIndex        = modelDat4 %>% 
+  names() %>% 
+  grep("innov_[1-9]{1}", ., ignore.case = TRUE)
+  
+  
+robotSEIndex               = modelDat4 %>% 
+  names() %>% 
+  grep("robotSE[1-9]{1}_", ., ignore.case = TRUE)
+  
+  
+trustingstanceIndex        = modelDat4 %>% 
+  names() %>% 
+  grep("trustingstance_", ., ignore.case = TRUE)
+  
+
+ageNumIndex   = modelDat4 %>%
+  names() %>%
+  grep("ageNum", ., ignore.case = TRUE)
+
+  
+genderNumIndex             = modelDat4 %>% 
+  names() %>% 
+  grep("genderNum", ., ignore.case = TRUE)
+  
+  
+eduNumIndex                = modelDat4 %>% 
+  names() %>% 
+  grep("eduNum", ., ignore.case = TRUE)
+  
+  
+
+
+
+
+
+
+#### assembling the model blocks
+
+
+
+modelBlocks = list(
+  anthroTreatIndex,
+  empathTreatIndex,
+  treatAnthroEmpathIndex,
+  treatAnthroInterIndex,
+  treatEmpathInterIndex,
+  anthroIndex,
+  emphaIndex,
+  AnthroEmpathIndex,
+  interEmpathIndex,
+  interAnthroIndex,
+  
+  failIndex,
+  trexIndex,
+  PItrexIndex,
+  trPerfIndex,
+  trdiscIndex,
+  satisIndex,
+  techtrInt,
+  
+  playfulnessIndex,   
+  innovativenessIndex,
+  robotSEIndex,  
+  ageNumIndex,
+  trustingstanceIndex,
+  genderNumIndex,     
+  eduNumIndex,
+  
+  useContIndex,
+  reUseIndex
+)
+
+
+blockAmount = length(modelBlocks)
+
+# They are reflective as per definition in Lankton 2014
+
+modelModes = rep("A", blockAmount) 
+
+
+modelDat4 %>% 
+  filter_all(
+    any_vars(is.na(.))
+  )
+
+
+# the whole model
+
+modelDat4 = modelDat4 %>%
+  filter(!is.na(genderNum))
+
+
+anthroModel4 = plspm(Data = modelDat4, path_matrix = techPath, blocks = modelBlocks, modes = modelModes)
+
+```
+
+
+```{r loadings plot4, ffig.asp=0.8, fig.width=12, fig.height=10, echo=FALSE, fig.cap=paste("Barchart of indicator loadings grouped by latent variable. The horizontal line indicates the 0.7 threshold.")}
+
+ggplot(data = anthroModel4$outer_model,
+       aes(x = name, y = loading, fill = block)) +
+  
+  geom_bar(
+    stat = "identity", position = "dodge"
+  ) +
+  # threshold line (to peek acceptable loadings above 0.7)
+  geom_hline(yintercept = 0.7, color = "gray50"
+  ) +
+  # add title
+  ggtitle("Barchart of Loadings") +
+  # rotate x-axis names
+  theme(axis.text.x = element_text(angle = 90),
+        legend.title = element_text(size = rel(0.85), face = "bold"),
+        legend.text = element_text(size = rel(0.70), face = "bold"),
+        legend.key = element_rect(fill = "transparent", colour = NA),
+        legend.key.size = unit(1.5, "lines"),
+        legend.background = element_rect(fill = "transparent", colour = NA)) +
+  theme(legend.position="bottom") +
+  guides(fill = guide_legend(nrow = 5, byrow = TRUE),
+         shape = guide_legend(override.aes = list(size = 3))) +
+  labs(x = "Indicator Name",
+       fill = "Latent Variable",
+       y = "Loading")
+
+
+```
+
+
+### 3.2 Cross-loadings of the new model
+Here it clearly visible that especially within the interactions, there is the danger of a traitor variable, however the values never became higher than in the respective latent variable block, the indicators were assigned to. Here it s also visible that all the traitor indicators disappeared after the item culling process. If read like a correlation matrix, the pattern should reflect the latent variable blocks of the model.
+
+
+
+```{r heatmapdata4, echo=FALSE, include=FALSE}
+
+
+
+
+### get some heat maps
+
+
+## create matrix
+crossloadings = anthroModel4$crossloadings
+
+loadingNames = crossloadings$name
+
+
+hmCrossl = crossloadings %>% 
+  select(-block) %>% 
+  melt(., value.name = "Cross Loading") %>% 
+  rename(
+    Block = variable, Item = name 
+  ) %>% 
+  filter(
+    !grepl("innov|trustingstance|gender|edunum|playful|robotse", ignore.case = TRUE, Block) & !grepl("innov|trustingstance|gender|edunum|playful|robotse", ignore.case = TRUE, Item)
+  ) 
+
+
+
+## create raster plot
+
+# make nicer names for the items for the graph
+
+
+rasterDat = hmCrossl %>% 
+  
+
+  mutate(., 
+         
+         Item = str_replace_all(Item, "Usage_Cont_Intention_", "Usage Continuance Intention "),
+         Item = str_replace_all(Item, "PI_", "PI-"),
+         Item = str_replace_all(Item, "anthroEmpath", "Anthro (P) x Empathy (P)"),
+         Item = str_replace_all(Item, "TrDisc", "Trusting Disconfirmation"),
+         Item = str_replace_all(Item, "TrEx|trEx", "Trusting Expectations "),
+         Item = str_replace_all(Item, "TrPerf", "Trusting Performance"),
+         Item = str_replace_all(Item, "empathInter", "Empathy (P) x Failure (P)"),
+         Item = str_replace_all(Item, "anthroInter", "Anthro (P) x Failure (P)"),
+         Item = str_replace_all(Item, "treatAnthroEmpath", "Anthro (T) x Empathy "),
+         Item = str_replace_all(Item, "TreatAnthroInter", "Anthro (T) x Failure (P) "),
+         Item = str_replace_all(Item, "TreatEmpathInter", "Empathy (T) x Failure (P) "),
+         Item = str_replace_all(Item, "reUse", "re-use"),
+         Item = str_replace_all(Item, "empathy", "Empathy (T)"),
+         Item = str_replace_all(Item, "anthropo", "Anthro (T)"),
+         Item = str_replace_all(Item, "MC_serviceFailure_", "Failure (P)"),
+         
+         Item = str_replace_all(Item, "_", " ")
+         
+         
+            ) %>% 
+  
+  mutate(
+    Block = str_replace_all(Block, "anthroTreat", "Anthro (T)"),
+    Block = str_replace_all(Block, "empathTreat", "Empathy (T)"),
+    Block = str_replace_all(Block, "treatAnthroEmpath", "Anthro (T) x Empathy (T)"),
+    Block = str_replace_all(Block, "treatAnthroInter", "Anthro (T) x Failure (P)"),
+    Block = str_replace_all(Block, "treatEmpathInter", "Empathy (T) x Failure (P)"),
+    Block = str_replace_all(Block, "anthro", "Anthro (P)"),
+    Block = str_replace_all(Block, "empathy", "Empathy (P)"),
+    Block = str_replace_all(Block, "AnthroEmpath", "Empathy (P) x Anthro (P)"),
+    Block = str_replace_all(Block, "interEmpath", "Empathy (P) x Failure (P)"),
+    Block = str_replace_all(Block, "interAnthro", "Anthro (P) x Failure (P)"),
+    Block = str_replace_all(Block, "servFailure", "Failure (P)"),
+    Block = str_replace_all(Block, "PostInc", "PI-"),
+    Block = str_replace_all(Block, "interEmpath", "Empathy (P) x Failure (P)"),
+    Block = str_replace_all(Block, "reUse", "re-use"),
+    Block = str_replace_all(Block, "reUse", "re-use"),
+  )
+
+
+unique(rasterDat$Item)
+unique(rasterDat$Block)
+
+
+
+```
+
+
+
+```{r crossloadings plot4, ffig.asp=0.8, fig.width=12, fig.height=14, echo=FALSE, fig.cap=paste("Heatmap of the crossloadings within the respective latent variables. Brighter values indicate higher loadings")}
+
+
+
+ggplot(rasterDat, aes(x = factor(Block, levels = unique(Block)), y = factor(Item, levels = unique(Item)), fill = `Cross Loading`)) +
+  geom_raster() +
+  # scale_y_discrete(guide = guide_axis(angle = -45)) +
+  scale_x_discrete(guide = guide_axis(angle = 45)) +
+  labs(title = "Cross Loadings for Item Blocks") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  paletteer::scale_fill_paletteer_c("viridis::plasma") +
+
+  labs(
+    x = "Block",
+    y = "Items"
+  )
+
+```
+
+### 3.3 Inner model of the final model
+The final model's inner model reflect the values within figure 8. of the MSc-thesis.
+
+
+```{r innerModel4}
+
+anthroModel4$inner_model
+
+```
+
+
+
+### 3.4 Direct relationships
+
+It is also possible to list all direct relationships within the model itself
+
+
+```{r relationships4, echo=FALSE}
+
+
+
+effects = anthroModel4$effects %>% 
+  filter(direct != 0 | indirect != 0) %>% 
+  filter(direct != 0)
+
+
+
+pathEffects = as.matrix(effects[2:3])
+
+rownames(pathEffects) = effects$relationships
+
+pathEffects
+
+```
+
+
+### 3.5 Pseudo-goodness of fit of the model
+
+The pseudo goodness-of-fit is higher compared to the former model by 4%, which means more variance is explained.
+
+```{r GoF4}
+
+anthroModel4$gof
+
+```
+
+
+### 3.6 Inner model summary
+
+Here is the inner model summary listed with the respective r-squares and other respective values. This table corresponds to table 6 in the thesis.
+
+```{r innerModelsummary4, echo=FALSE}
+
+innerSummary = anthroModel4$inner_summary %>% 
+  mutate(
+    Parameter = rownames(.)
+  ) %>% 
+  select(
+    Parameter, R2, AVE, Block_Communality
+  ) %>% 
+
+  filter(
+    R2 > 0
+  )
+
+innerSummary
+
+```
+
+
+
+
+## 4. Halo Effect
+
+As described by Oliver (2014), a halo effect can come into place when there is a positive correlation between Disconfirmation and expectations. This will be tested here. Following values will be the r-value and the p-value of the correlation test:
+
+```{r halo, echo=FALSE}
+## testing correlation between PI-expectations and disconfirmation. Comparison 
+
+
+# selecting vars
+
+correlation = modelDat4 %>% 
+  select(matches("pi_trex|disc")) %>% 
+  mutate(
+    mean_PI_TrustingExpectations = select(., matches("pi_trex")) %>% rowMeans(),
+    mean_PI_TrustingDisconfirm = select(., matches("disc")) %>% rowMeans()
+  ) %>% 
+  select(matches("mean_")) 
+
+
+result = corr.test(correlation$mean_PI_TrustingExpectations, correlation$mean_PI_TrustingDisconfirm, method = "pearson")
+
+result$r
+result$p.adj# significantly correlated
+```
+
+## 5. Cross-loadings table
+
+The cross-loadings table is too large to put it into a table. The data is saved in the file: CrossLoadingsTable.csv
+```{r cLT, echo=FALSE}
+
+anthroModel4$crossloadings %>% 
+  mutate_if(is.numeric, round, 3) %>% 
+  write.csv2(., file = "CrossLoadingsTable.csv")
+
+```
+
+
+## 6. Randomisation Check
+
+```{r manipulation check DM, echo=FALSE, include=FALSE}
+MCdat = calcDat %>% 
+  mutate(
+    anthropo = case_when(
+      
+      grepl("^A", group) ~ 1,
+      grepl("^N", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    empathy = case_when(
+      
+      grepl("E$", group) ~ 1,
+      grepl("N$", group) ~ 0
+      
+    ) %>% as.factor(),
+    
+    eduNum = case_when(
+      
+      grepl("Mandatory School", Edu, ignore.case = TRUE) ~ 1,
+      grepl("Vocational Education and Training/Professional Certificate", Edu, ignore.case = TRUE) ~ 2,
+      grepl("Grammar school or equivalent", Edu, ignore.case = TRUE) ~ 3,
+      grepl("Bachelor's degree or equivalent", Edu, ignore.case = TRUE) ~ 4,
+      grepl("Master's degree", Edu, ignore.case = TRUE) ~ 5,
+      grepl("PhD, MD or higher", Edu, ignore.case = TRUE) ~ 6
+      
+    ),
+    
+    
+    # Creating meaningful numeric measures for control vars like age, gender and education
+    
+    genderNum = case_when(
+      
+      grepl("Female", Gender) ~ 2,
+      grepl("Male", Gender) ~ 1,
+      grepl("No Answer", Gender) ~ 0
+    ),
+    
+    
+    
+    ageNum = case_when(
+      
+      grepl("Younger than 20", Age_1, ignore.case = TRUE) ~ 1,
+      grepl("20-29", Age_1, ignore.case = TRUE) ~ 2,
+      grepl("30-39", Age_1, ignore.case = TRUE) ~ 3,
+      grepl("40-49", Age_1, ignore.case = TRUE) ~ 4,
+      grepl("50-59", Age_1, ignore.case = TRUE) ~ 5,
+      grepl("60-69", Age_1, ignore.case = TRUE) ~ 6,
+      grepl("70-79", Age_1, ignore.case = TRUE) ~ 7,
+      grepl("Older than 80", Age_1, ignore.case = TRUE) ~ 8,
+      
+    ),
+    
+    
+  ) %>% 
+  mutate(
+    group = as.factor(group)
+  )
+
+
+
+
+```
+
+Here we want to see whether the group variable, i.e. the treatment groups where each participant was assigned to, is able  to predict either gender, age or education.
+This was not the case however (Compare F-Statistic in case of each model summary).
+
+
+### 6.1 Gender, Age and Education
+
+```{r manipulation check1, echo=FALSE}
+
+lm(genderNum ~ group, data = MCdat) %>% 
+  summary()
+
+lm(eduNum ~ group, data = MCdat) %>% 
+  summary()
+
+lm(ageNum ~ group, data = MCdat) %>% 
+  summary()
+
+```
+
+
+### 6.2 Techn. Playfulness and Innovativeness
+
+```{r manipulation check2, echo=FALSE}
+
+# innovativeness
+
+lm(techhnologyInnovativeness ~ group, data = MCdat) %>% 
+  summary()
+
+# Playfulness
+
+lm(technologyPlayfulness ~ group, data = MCdat) %>% 
+  summary()
+
+
+```
+
+
+### 6.3 Trusting Stance and Robot Self-Efficacy
+
+
+```{r manipulation check3, echo=FALSE}
+
+# innovativeness
+
+# Trusting Stance
+
+lm(generalTrustingStance ~ group, data = MCdat) %>% 
+  summary()
+
+
+# rotob self-efficacy
+
+lm(robotSelfEfficacy ~ group, data = MCdat) %>% 
+  summary()
+
+
+
+
+```
+
+
+
+## 7. Manipulation Check
+
+Here we want to see whether the treatment is able to predict the perceived variables, the treatment should have influneced. In other words, Anthropomorphic advisors should significantly predict the perceived anthropomorphism as well as empathy should predict the perceived empathy.
+```{r randomisation check, echo=FALSE}
+
+### anthropomorphism
+
+anthro = MCdat %>% 
+  
+  select(matches("group|anthro")) %>% 
+  
+  mutate_at(
+    vars(-matches("group|anthropo")),
+    list(as.numeric)
+  ) %>% 
+  
+  mutate(
+    group = as.factor(group),
+  ) %>% 
+  
+  mutate(
+    MCAnthro = rowMeans(select(., matches("anthro_"))) ### creating the mean to simplify the variable
+  ) 
+
+
+
+
+# Kurskal Test
+kruskal.test(MCAnthro ~ anthropo, data=anthro) # significant
+anthromod = lm(MCAnthro ~ anthropo, data = anthro) %>% 
+  summary()
+anthromod
+
+
+
+### empathy
+
+empath = MCdat %>% 
+  
+  select(matches("group|empath")) %>% 
+  
+  mutate_at(
+    vars(-matches("group|^empathy$")),
+    list(as.numeric)
+  ) %>% 
+  
+  mutate(
+    group = as.factor(group),
+  ) %>% 
+  
+  mutate(
+    MCEmpath = rowMeans(select(., matches("mc_empath")))
+  )
+
+
+
+
+# Kurskal Test
+kruskal.test(MCEmpath ~ empathy, data=empath) # significant
+
+
+# see what an LM can tell us? 
+empathmod = lm(MCEmpath ~ empathy, data = empath) %>% 
+  summary()
+empathmod
+
+
+
+
+
+
+
+```
+
+
+## 8. Cronbach's Alpha of various constructs
+
+
+### 8.1 Control Variables
+
+Listed are the alpha values for each item and construct.
+
+```{r control vars, echo=FALSE}
+
+alphaDat = calcDat %>% 
+  select(-matches("^AN|^NN|^NE|^AE"))
+
+
+print("Playfulness")
+
+alphaDat %>% 
+  select(matches("playful[1-2]{1}_")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+
+### 0.83
+
+
+# Innovativeness
+
+
+print("innovativeness")
+
+alphaDat %>% 
+  select(matches("innov_")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+### 0.82
+
+# Trusting Stance
+
+
+print("Trusting Stance")
+
+
+alphaDat %>% 
+  select(matches("TrustingStance_")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.62
+
+
+
+# Robot Self-efficacy
+
+print("Robot Self-efficacy")
+
+alphaDat %>% 
+  select(matches("robotse[1-5]{1}")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.77
+
+
+# Trusting stance towards agent
+print("Trusting stance towards agent")
+
+alphaDat %>% 
+  select(matches("^TrustingSt_Agent")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+```
+
+### 8.2 Experimental Variables
+
+```{r experimental vars, echo=FALSE}
+# Trusting expectations reliability
+print("Trusting expectations reliability")
+
+alphaDat %>% 
+  select(matches("^trExReliability")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.48
+
+
+# Trusting expectations functionality
+print("Trusting expectations functionality")
+
+alphaDat %>% 
+  select(matches("^trExFunct")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.86
+
+
+# Trusting expectations helpfulness
+
+print("Trusting expectations helpfulness")
+
+alphaDat %>% 
+  select(matches("^trExHelp")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+### 0.81
+
+
+
+
+###### trusting expectations
+
+# Post incident trusting expectations functionality
+
+print("Post incident trusting expectations functionality")
+
+alphaDat %>% 
+  select(matches("^PI_trex_func")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.9
+
+
+
+# Post incident trusting expectations helpfulness
+
+
+print("Post incident trusting expectations helpfulness")
+
+alphaDat %>% 
+  select(matches("^PI_trex_helpful")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+# Post incident trusting expectations functionality
+
+
+print("Post incident trusting expectations functionality")
+
+alphaDat %>% 
+  select(matches("^PI_trex_reliab")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+
+
+
+
+###### expectations disconfirmation post-incident
+
+
+# Post incident trusting expectations disconfirmation functionality
+
+print("Post incident trusting expectations disconfirmation functionality")
+
+
+alphaDat %>% 
+  select(matches("^PI_TrDisc_func")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.9
+
+
+
+# Post incident trusting expectations disconfirmation helpfulness
+print("Post incident trusting expectations disconfirmation helpfulness")
+
+alphaDat %>% 
+  select(matches("^PI_TrDisc_helpful")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+# Post incident trusting expectations disconfirmation functionality
+print("Post incident trusting expectations disconfirmation functionality")
+
+alphaDat %>% 
+  select(matches("^PI_TrDisc_reliab")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+
+
+
+###### trusting performance
+
+
+
+
+# Post incident trusting performance functionality
+
+
+print("Post incident trusting performance functionality")
+
+alphaDat %>% 
+  select(matches("^PI_TrPerf_func")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+### 0.9
+
+
+
+# Post incident trusting performance helpfulness
+print("Post incident trusting performance helpfulness")
+
+alphaDat %>% 
+  select(matches("^PI_TrPerf_helpful")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+# Post incident trusting performance reliability
+print("Post incident trusting performance reliability")
+
+alphaDat %>% 
+  select(matches("^PI_TrPerf_reliab")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+
+
+#### tech satisfaction
+
+print("tech satisfaction")
+
+alphaDat %>% 
+  select(matches("^PI_Tech_Satisfact")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+
+
+#### tech trusting intentions
+
+print("tech trusting intentions")
+
+alphaDat %>% 
+  select(matches("^PI_TechTr_Intentio")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+
+
+#### usage continuation intention
+
+
+print("usage continuation intention")
+
+alphaDat %>% 
+  select(matches("^Usage_Cont_Intention")) %>% 
+  mutate_all(., funs(as.numeric(.))) %>% 
+  alpha() %>% 
+  .$total
+
+```
+
+### 8.3 Constructs for Manipulation Check
+
+```{r mancheck vars, echo=FALSE}
+
+####### MC variables
+
+
+# cronbach's alpha
+
+
+### anthropomorphism in general
+print("Antrhopomorphism")
+
+alphaDat %>% 
+  select(matches("anthro")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha() %>% 
+  .$total
+
+# .73
+
+
+### empathy
+
+# empathy in general
+
+
+print("Empathy")
+
+alphaDat %>% 
+  select(matches("empathy")) %>% 
+  mutate_all(., list(as.numeric)) %>% 
+  alpha() %>% 
+  .$total
+
+```
+
