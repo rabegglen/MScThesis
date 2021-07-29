@@ -7,18 +7,22 @@ source("./scripts/plsPathAllVars.R")
 
 vars4 = names(modelDat4) %>% 
   tibble(vars = .)
+
+
 varsAll = names(ModelDatAll) %>% 
   tibble(vars = .)
 
+varsOmit = "robotSelfEfficacy|inter|technologyPlayfulness|generalTrustingStance|generalTrustingStance|trustingStanceAgent|treatAnthroEmpath|anthroEmpath|techhnologyInnovativeness"
 
-
-### see what's not in the final data
-
-
-varsOmitted = varsAll %>% 
-  anti_join(
-    ., vars4, by = "vars"
-  ) %>% 
+vars4 = vars4 %>% 
   filter(
-    !grepl("inter", ignore.case = TRUE, vars)
+    !grepl(varsOmit, vars, ignore.case = TRUE)
   )
+
+
+varsAll = varsAll %>% 
+  filter(
+    !grepl(varsOmit, vars, ignore.case = TRUE)
+  )
+
+
