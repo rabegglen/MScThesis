@@ -3,6 +3,7 @@
 pacman :: p_load(
   tidyverse,
   stargazer,
+  readxl,
   install = TRUE
 )
 
