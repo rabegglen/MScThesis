@@ -11,7 +11,8 @@ pacman :: p_load(
 
 abbr = list.files("./Data/", full.names = TRUE) %>%
   .[grepl("abbrevia.+\\.xlsx", ., ignore.case = TRUE)] %>% 
-  read_excel(.) 
+  read_excel(.) %>% 
+  arrange(Abbreviation)
 
 
 abbr %>% 
